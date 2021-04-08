@@ -1,0 +1,2685 @@
+{
+	"info": {
+		"_postman_id": "5b26c816-7092-458f-996e-6ab39f135a13",
+		"name": "eidaws-federator",
+		"description": "API and integration tests for the EIDA federator webservice (fdsnws-station endpoint).",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "fdsnws-station",
+			"item": [
+				{
+					"name": "version",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ec8be5c7-b561-4351-af21-690e8249140c",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Header is correct\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.response.to.be.header(\"Content-Type\", \"text/plain; charset=utf-8\");",
+									"});",
+									"",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.match(/^1\\./);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}:{{port_fed}}/fdsnws/station/1/version",
+							"host": [
+								"{{url_base}}"
+							],
+							"port": "{{port_fed}}",
+							"path": [
+								"fdsnws",
+								"station",
+								"1",
+								"version"
+							]
+						},
+						"description": "validate version"
+					},
+					"response": []
+				},
+				{
+					"name": "query?foo=bar",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f940622e-f2dd-4c70-8042-66cb6aa1bf5a",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Header is correct\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.response.to.be.header(\"Content-Type\", \"text/plain; charset=utf-8\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}:{{port_fed}}/fdsnws/station/1/query?foo=bar",
+							"host": [
+								"{{url_base}}"
+							],
+							"port": "{{port_fed}}",
+							"path": [
+								"fdsnws",
+								"station",
+								"1",
+								"query"
+							],
+							"query": [
+								{
+									"key": "foo",
+									"value": "bar"
+								}
+							]
+						},
+						"description": "Bad request (HTTP 400).\n\nTest invalid query parameter."
+					},
+					"response": []
+				},
+				{
+					"name": "query?foo=bar",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f940622e-f2dd-4c70-8042-66cb6aa1bf5a",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Header is correct\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.response.to.be.header(\"Content-Type\", \"text/plain; charset=utf-8\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "text/plain",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "foo=bar\n\nCH HASLI * * 2019-01-01 2020-01-01",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{url_base}}:{{port_fed}}/fdsnws/station/1/query",
+							"host": [
+								"{{url_base}}"
+							],
+							"port": "{{port_fed}}",
+							"path": [
+								"fdsnws",
+								"station",
+								"1",
+								"query"
+							]
+						},
+						"description": "Bad request (HTTP 400).\n\nTest invalid query parameter."
+					},
+					"response": []
+				},
+				{
+					"name": "query? (empty request)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f940622e-f2dd-4c70-8042-66cb6aa1bf5a",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Header is correct\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.response.to.be.header(\"Content-Type\", \"text/plain; charset=utf-8\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "text/plain"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\n",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{url_base}}:{{port_fed}}/fdsnws/station/1/query",
+							"host": [
+								"{{url_base}}"
+							],
+							"port": "{{port_fed}}",
+							"path": [
+								"fdsnws",
+								"station",
+								"1",
+								"query"
+							]
+						},
+						"description": "Bad request (HTTP 400).\n\nTest empty request."
+					},
+					"response": []
+				},
+				{
+					"name": "query?includeavailability=true",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f940622e-f2dd-4c70-8042-66cb6aa1bf5a",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Header is correct\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.response.to.be.header(\"Content-Type\", \"text/plain; charset=utf-8\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}:{{port_fed}}/fdsnws/station/1/query?includeavailability=true",
+							"host": [
+								"{{url_base}}"
+							],
+							"port": "{{port_fed}}",
+							"path": [
+								"fdsnws",
+								"station",
+								"1",
+								"query"
+							],
+							"query": [
+								{
+									"key": "includeavailability",
+									"value": "true"
+								}
+							]
+						},
+						"description": "Bad request (HTTP 400).\n\nTest invalid query parameter."
+					},
+					"response": []
+				},
+				{
+					"name": "query?includeavailability=true",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f940622e-f2dd-4c70-8042-66cb6aa1bf5a",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Header is correct\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.response.to.be.header(\"Content-Type\", \"text/plain; charset=utf-8\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "includeavailability=true\n\n* * * * 2019-01-01 2020-01-01",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{url_base}}:{{port_fed}}/fdsnws/station/1/query?",
+							"host": [
+								"{{url_base}}"
+							],
+							"port": "{{port_fed}}",
+							"path": [
+								"fdsnws",
+								"station",
+								"1",
+								"query"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Bad request (HTTP 400).\n\nTest invalid query parameter."
+					},
+					"response": []
+				},
+				{
+					"name": "query?updateafter=2019-01-01",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f940622e-f2dd-4c70-8042-66cb6aa1bf5a",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Header is correct\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.response.to.be.header(\"Content-Type\", \"text/plain; charset=utf-8\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}:{{port_fed}}/fdsnws/station/1/query?updateafter=2019-01-01",
+							"host": [
+								"{{url_base}}"
+							],
+							"port": "{{port_fed}}",
+							"path": [
+								"fdsnws",
+								"station",
+								"1",
+								"query"
+							],
+							"query": [
+								{
+									"key": "updateafter",
+									"value": "2019-01-01"
+								}
+							]
+						},
+						"description": "Bad request (HTTP 400).\n\nTest invalid query parameter."
+					},
+					"response": []
+				},
+				{
+					"name": "query?updateafter=2019-01-01",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f940622e-f2dd-4c70-8042-66cb6aa1bf5a",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Header is correct\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.response.to.be.header(\"Content-Type\", \"text/plain; charset=utf-8\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "updateafter=2019-01-01\n\n* * * * 2019-01-01 2020-01-01",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{url_base}}:{{port_fed}}/fdsnws/station/1/query",
+							"host": [
+								"{{url_base}}"
+							],
+							"port": "{{port_fed}}",
+							"path": [
+								"fdsnws",
+								"station",
+								"1",
+								"query"
+							]
+						},
+						"description": "Bad request (HTTP 400).\n\nTest invalid query parameter."
+					},
+					"response": []
+				},
+				{
+					"name": "query?matchtimeseries=true",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f940622e-f2dd-4c70-8042-66cb6aa1bf5a",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Header is correct\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.response.to.be.header(\"Content-Type\", \"text/plain; charset=utf-8\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}:{{port_fed}}/fdsnws/station/1/query?matchtimeseries=true",
+							"host": [
+								"{{url_base}}"
+							],
+							"port": "{{port_fed}}",
+							"path": [
+								"fdsnws",
+								"station",
+								"1",
+								"query"
+							],
+							"query": [
+								{
+									"key": "matchtimeseries",
+									"value": "true"
+								}
+							]
+						},
+						"description": "Bad request (HTTP 400).\n\nTest invalid query parameter."
+					},
+					"response": []
+				},
+				{
+					"name": "query?matchtimeseries=true",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f940622e-f2dd-4c70-8042-66cb6aa1bf5a",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Header is correct\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.response.to.be.header(\"Content-Type\", \"text/plain; charset=utf-8\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "matchtimeseries=true\n\n* * * * 2019-01-01 2020-01-01",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{url_base}}:{{port_fed}}/fdsnws/station/1/query",
+							"host": [
+								"{{url_base}}"
+							],
+							"port": "{{port_fed}}",
+							"path": [
+								"fdsnws",
+								"station",
+								"1",
+								"query"
+							]
+						},
+						"description": "Bad request (HTTP 400).\n\nTest invalid query parameter."
+					},
+					"response": []
+				},
+				{
+					"name": "query?net=CH&level=network&format=text",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e770af07-24cd-4be2-8192-715d61948336",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Header is correct\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.response.to.be.header(\"Content-Type\", \"text/plain; charset=utf-8\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}:{{port_fed}}/fdsnws/station/1/query?net=CH&level=network&format=text",
+							"host": [
+								"{{url_base}}"
+							],
+							"port": "{{port_fed}}",
+							"path": [
+								"fdsnws",
+								"station",
+								"1",
+								"query"
+							],
+							"query": [
+								{
+									"key": "net",
+									"value": "CH"
+								},
+								{
+									"key": "level",
+									"value": "network"
+								},
+								{
+									"key": "format",
+									"value": "text"
+								}
+							]
+						},
+						"description": "Single node, single network\n\nformat=text"
+					},
+					"response": []
+				},
+				{
+					"name": "query?net=CH&level=network&format=text",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e770af07-24cd-4be2-8192-715d61948336",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Header is correct\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.response.to.be.header(\"Content-Type\", \"text/plain; charset=utf-8\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "level=network\nformat=text\n\nCH * * * 2019-01-01 2019-01-02",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{url_base}}:{{port_fed}}/fdsnws/station/1/query",
+							"host": [
+								"{{url_base}}"
+							],
+							"port": "{{port_fed}}",
+							"path": [
+								"fdsnws",
+								"station",
+								"1",
+								"query"
+							]
+						},
+						"description": "Single node, single network\n\nformat=text"
+					},
+					"response": []
+				},
+				{
+					"name": "query?net=CH&level=network&format=xml",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e770af07-24cd-4be2-8192-715d61948336",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Header is correct\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.response.to.be.header(\"Content-Type\", \"application/xml\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}:{{port_fed}}/fdsnws/station/1/query?net=CH&level=network&format=xml",
+							"host": [
+								"{{url_base}}"
+							],
+							"port": "{{port_fed}}",
+							"path": [
+								"fdsnws",
+								"station",
+								"1",
+								"query"
+							],
+							"query": [
+								{
+									"key": "net",
+									"value": "CH"
+								},
+								{
+									"key": "level",
+									"value": "network"
+								},
+								{
+									"key": "format",
+									"value": "xml"
+								}
+							]
+						},
+						"description": "Single node, single network\n\nformat=xml"
+					},
+					"response": []
+				},
+				{
+					"name": "query?net=CH&level=network&format=xml",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e770af07-24cd-4be2-8192-715d61948336",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Header is correct\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.response.to.be.header(\"Content-Type\", \"application/xml\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "level=network\nformat=xml\n\nCH * * * 2019-01-01 2019-01-02",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{url_base}}:{{port_fed}}/fdsnws/station/1/query?net=CH&level=network&format=xml",
+							"host": [
+								"{{url_base}}"
+							],
+							"port": "{{port_fed}}",
+							"path": [
+								"fdsnws",
+								"station",
+								"1",
+								"query"
+							],
+							"query": [
+								{
+									"key": "net",
+									"value": "CH"
+								},
+								{
+									"key": "level",
+									"value": "network"
+								},
+								{
+									"key": "format",
+									"value": "xml"
+								}
+							]
+						},
+						"description": "Single node, single network\n\nformat=xml"
+					},
+					"response": []
+				},
+				{
+					"name": "query?net=CH,C4&level=network&format=text",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e770af07-24cd-4be2-8192-715d61948336",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Header is correct\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.response.to.be.header(\"Content-Type\", \"text/plain; charset=utf-8\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}:{{port_fed}}/fdsnws/station/1/query?net=CH,C4&level=network&format=text",
+							"host": [
+								"{{url_base}}"
+							],
+							"port": "{{port_fed}}",
+							"path": [
+								"fdsnws",
+								"station",
+								"1",
+								"query"
+							],
+							"query": [
+								{
+									"key": "net",
+									"value": "CH,C4"
+								},
+								{
+									"key": "level",
+									"value": "network"
+								},
+								{
+									"key": "format",
+									"value": "text"
+								}
+							]
+						},
+						"description": "Single node, multi networks\n\nformat=text"
+					},
+					"response": []
+				},
+				{
+					"name": "query?net=CH,C4&level=network&format=xml",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e770af07-24cd-4be2-8192-715d61948336",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Header is correct\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.response.to.be.header(\"Content-Type\", \"application/xml\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}:{{port_fed}}/fdsnws/station/1/query?net=CH,C4&level=network&format=xml",
+							"host": [
+								"{{url_base}}"
+							],
+							"port": "{{port_fed}}",
+							"path": [
+								"fdsnws",
+								"station",
+								"1",
+								"query"
+							],
+							"query": [
+								{
+									"key": "net",
+									"value": "CH,C4"
+								},
+								{
+									"key": "level",
+									"value": "network"
+								},
+								{
+									"key": "format",
+									"value": "xml"
+								}
+							]
+						},
+						"description": "Single node, multi networks\n\nformat=xml"
+					},
+					"response": []
+				},
+				{
+					"name": "query?net=CH,GR&level=network&format=text",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e770af07-24cd-4be2-8192-715d61948336",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Header is correct\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.response.to.be.header(\"Content-Type\", \"text/plain; charset=utf-8\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}:{{port_fed}}/fdsnws/station/1/query?net=CH,GR&level=network&format=text",
+							"host": [
+								"{{url_base}}"
+							],
+							"port": "{{port_fed}}",
+							"path": [
+								"fdsnws",
+								"station",
+								"1",
+								"query"
+							],
+							"query": [
+								{
+									"key": "net",
+									"value": "CH,GR"
+								},
+								{
+									"key": "level",
+									"value": "network"
+								},
+								{
+									"key": "format",
+									"value": "text"
+								}
+							]
+						},
+						"description": "Multi node, multi networks\n\nformat=text"
+					},
+					"response": []
+				},
+				{
+					"name": "query?net=CH,GR&level=network&format=xml",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e770af07-24cd-4be2-8192-715d61948336",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Header is correct\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.response.to.be.header(\"Content-Type\", \"application/xml\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}:{{port_fed}}/fdsnws/station/1/query?net=CH,GR&level=network&format=xml",
+							"host": [
+								"{{url_base}}"
+							],
+							"port": "{{port_fed}}",
+							"path": [
+								"fdsnws",
+								"station",
+								"1",
+								"query"
+							],
+							"query": [
+								{
+									"key": "net",
+									"value": "CH,GR"
+								},
+								{
+									"key": "level",
+									"value": "network"
+								},
+								{
+									"key": "format",
+									"value": "xml"
+								}
+							]
+						},
+						"description": "Multi node, multi networks\n\nformat=xml"
+					},
+					"response": []
+				},
+				{
+					"name": "query?net=CH&sta=HASLI&level=station&format=text",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e770af07-24cd-4be2-8192-715d61948336",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Header is correct\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.response.to.be.header(\"Content-Type\", \"text/plain; charset=utf-8\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}:{{port_fed}}/fdsnws/station/1/query?net=CH&sta=HASLI&level=station&format=text",
+							"host": [
+								"{{url_base}}"
+							],
+							"port": "{{port_fed}}",
+							"path": [
+								"fdsnws",
+								"station",
+								"1",
+								"query"
+							],
+							"query": [
+								{
+									"key": "net",
+									"value": "CH"
+								},
+								{
+									"key": "sta",
+									"value": "HASLI"
+								},
+								{
+									"key": "level",
+									"value": "station"
+								},
+								{
+									"key": "format",
+									"value": "text"
+								}
+							]
+						},
+						"description": "Single node, single network, single station\n\nformat=text"
+					},
+					"response": []
+				},
+				{
+					"name": "query?net=CH&sta=HASLI&level=station&format=xml",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e770af07-24cd-4be2-8192-715d61948336",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Header is correct\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.response.to.be.header(\"Content-Type\", \"application/xml\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}:{{port_fed}}/fdsnws/station/1/query?net=CH&sta=HASLI&level=station&format=xml",
+							"host": [
+								"{{url_base}}"
+							],
+							"port": "{{port_fed}}",
+							"path": [
+								"fdsnws",
+								"station",
+								"1",
+								"query"
+							],
+							"query": [
+								{
+									"key": "net",
+									"value": "CH"
+								},
+								{
+									"key": "sta",
+									"value": "HASLI"
+								},
+								{
+									"key": "level",
+									"value": "station"
+								},
+								{
+									"key": "format",
+									"value": "xml"
+								}
+							]
+						},
+						"description": "Single node, single network, single station\n\nformat=xml"
+					},
+					"response": []
+				},
+				{
+					"name": "query?net=CH&sta=HASLI,BALST,DAVOX&level=station&format=text",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e770af07-24cd-4be2-8192-715d61948336",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Header is correct\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.response.to.be.header(\"Content-Type\", \"text/plain; charset=utf-8\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}:{{port_fed}}/fdsnws/station/1/query?net=CH&sta=HASLI,BALST,DAVOX&level=station&format=text",
+							"host": [
+								"{{url_base}}"
+							],
+							"port": "{{port_fed}}",
+							"path": [
+								"fdsnws",
+								"station",
+								"1",
+								"query"
+							],
+							"query": [
+								{
+									"key": "net",
+									"value": "CH"
+								},
+								{
+									"key": "sta",
+									"value": "HASLI,BALST,DAVOX"
+								},
+								{
+									"key": "level",
+									"value": "station"
+								},
+								{
+									"key": "format",
+									"value": "text"
+								}
+							]
+						},
+						"description": "Single node, single network, multi stations"
+					},
+					"response": []
+				},
+				{
+					"name": "query?net=CH&sta=HASLI,BALST,DAVOX&level=station&format=xml",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e770af07-24cd-4be2-8192-715d61948336",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Header is correct\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.response.to.be.header(\"Content-Type\", \"application/xml\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}:{{port_fed}}/fdsnws/station/1/query?net=CH&sta=HASLI,BALST,DAVOX&level=station&format=xml",
+							"host": [
+								"{{url_base}}"
+							],
+							"port": "{{port_fed}}",
+							"path": [
+								"fdsnws",
+								"station",
+								"1",
+								"query"
+							],
+							"query": [
+								{
+									"key": "net",
+									"value": "CH"
+								},
+								{
+									"key": "sta",
+									"value": "HASLI,BALST,DAVOX"
+								},
+								{
+									"key": "level",
+									"value": "station"
+								},
+								{
+									"key": "format",
+									"value": "xml"
+								}
+							]
+						},
+						"description": "Single node, single network, multi stations\n\nformat=xml"
+					},
+					"response": []
+				},
+				{
+					"name": "query?net=CH&format=text&level=station - geo constraints (alt keys)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0d2b47e8-1062-4ad9-b9d0-389573e2767e",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Header is valid\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.response.to.be.header(\"Content-Type\", \"text/plain; charset=utf-8\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}:{{port_fed}}/fdsnws/station/1/query?net=CH&format=text&level=station&minlat=45.8&maxlat=46.2&minlon=8.5&maxlon=9.2",
+							"host": [
+								"{{url_base}}"
+							],
+							"port": "{{port_fed}}",
+							"path": [
+								"fdsnws",
+								"station",
+								"1",
+								"query"
+							],
+							"query": [
+								{
+									"key": "net",
+									"value": "CH"
+								},
+								{
+									"key": "format",
+									"value": "text"
+								},
+								{
+									"key": "level",
+									"value": "station"
+								},
+								{
+									"key": "minlat",
+									"value": "45.8"
+								},
+								{
+									"key": "maxlat",
+									"value": "46.2"
+								},
+								{
+									"key": "minlon",
+									"value": "8.5"
+								},
+								{
+									"key": "maxlon",
+									"value": "9.2"
+								}
+							]
+						},
+						"description": "Single route, geo constraints (alt keys):\n\nlevel=network\nformat=get"
+					},
+					"response": []
+				},
+				{
+					"name": "query?net=CH&format=text&level=station - geo constraints (full keys)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0d2b47e8-1062-4ad9-b9d0-389573e2767e",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Header is valid\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.response.to.be.header(\"Content-Type\", \"text/plain; charset=utf-8\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}:{{port_fed}}/fdsnws/station/1/query?net=CH&format=text&level=station&minlatitude=45.8&maxlatitude=46.2&minlongitude=8.5&maxlongitude=9.2",
+							"host": [
+								"{{url_base}}"
+							],
+							"port": "{{port_fed}}",
+							"path": [
+								"fdsnws",
+								"station",
+								"1",
+								"query"
+							],
+							"query": [
+								{
+									"key": "net",
+									"value": "CH"
+								},
+								{
+									"key": "format",
+									"value": "text"
+								},
+								{
+									"key": "level",
+									"value": "station"
+								},
+								{
+									"key": "minlatitude",
+									"value": "45.8"
+								},
+								{
+									"key": "maxlatitude",
+									"value": "46.2"
+								},
+								{
+									"key": "minlongitude",
+									"value": "8.5"
+								},
+								{
+									"key": "maxlongitude",
+									"value": "9.2"
+								}
+							]
+						},
+						"description": "Single route, geo constraints (full keys):\n\nlevel=network\nformat=get"
+					},
+					"response": []
+				},
+				{
+					"name": "query?net=CH&sta=HASLI&cha=BHZlevel=channel&format=text",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e770af07-24cd-4be2-8192-715d61948336",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Header is correct\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.response.to.be.header(\"Content-Type\", \"text/plain; charset=utf-8\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}:{{port_fed}}/fdsnws/station/1/query?net=CH&sta=HASLI&cha=BHZ&level=channel&format=text",
+							"host": [
+								"{{url_base}}"
+							],
+							"port": "{{port_fed}}",
+							"path": [
+								"fdsnws",
+								"station",
+								"1",
+								"query"
+							],
+							"query": [
+								{
+									"key": "net",
+									"value": "CH"
+								},
+								{
+									"key": "sta",
+									"value": "HASLI"
+								},
+								{
+									"key": "cha",
+									"value": "BHZ"
+								},
+								{
+									"key": "level",
+									"value": "channel"
+								},
+								{
+									"key": "format",
+									"value": "text"
+								}
+							]
+						},
+						"description": "Single node, single network, single station\n\nlevel=channel\nformat=text"
+					},
+					"response": []
+				},
+				{
+					"name": "query?net=CH,AW,GR,BW&level=network&format=text (not cached)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e770af07-24cd-4be2-8192-715d61948336",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Header is correct\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.response.to.be.header(\"Content-Type\", \"text/plain; charset=utf-8\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}:{{port_fed}}/fdsnws/station/1/query?net=CH,AW,GR,BW&level=network&format=text",
+							"host": [
+								"{{url_base}}"
+							],
+							"port": "{{port_fed}}",
+							"path": [
+								"fdsnws",
+								"station",
+								"1",
+								"query"
+							],
+							"query": [
+								{
+									"key": "net",
+									"value": "CH,AW,GR,BW"
+								},
+								{
+									"key": "level",
+									"value": "network"
+								},
+								{
+									"key": "format",
+									"value": "text"
+								}
+							]
+						},
+						"description": "Test cache\n\nformat=text"
+					},
+					"response": []
+				},
+				{
+					"name": "query?net=CH,AW,GR,BW&level=network&format=text (cached)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e770af07-24cd-4be2-8192-715d61948336",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Header is correct\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.response.to.be.header(\"Content-Type\", \"text/plain; charset=utf-8\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}:{{port_fed}}/fdsnws/station/1/query?net=CH,AW,GR,BW&level=network&format=text",
+							"host": [
+								"{{url_base}}"
+							],
+							"port": "{{port_fed}}",
+							"path": [
+								"fdsnws",
+								"station",
+								"1",
+								"query"
+							],
+							"query": [
+								{
+									"key": "net",
+									"value": "CH,AW,GR,BW"
+								},
+								{
+									"key": "level",
+									"value": "network"
+								},
+								{
+									"key": "format",
+									"value": "text"
+								}
+							]
+						},
+						"description": "Test cache\n\nformat=text"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "fdsnws-dataselect",
+			"item": [
+				{
+					"name": "version",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ec8be5c7-b561-4351-af21-690e8249140c",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Header is correct\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.response.to.be.header(\"Content-Type\", \"text/plain; charset=utf-8\");",
+									"});",
+									"",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.match(/^1\\./);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}:{{port_fed}}/fdsnws/dataselect/1/version",
+							"host": [
+								"{{url_base}}"
+							],
+							"port": "{{port_fed}}",
+							"path": [
+								"fdsnws",
+								"dataselect",
+								"1",
+								"version"
+							]
+						},
+						"description": "validate version"
+					},
+					"response": []
+				},
+				{
+					"name": "query?foo=bar",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f940622e-f2dd-4c70-8042-66cb6aa1bf5a",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Header is correct\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.response.to.be.header(\"Content-Type\", \"text/plain; charset=utf-8\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}:{{port_fed}}/fdsnws/dataselect/1/query?foo=bar",
+							"host": [
+								"{{url_base}}"
+							],
+							"port": "{{port_fed}}",
+							"path": [
+								"fdsnws",
+								"dataselect",
+								"1",
+								"query"
+							],
+							"query": [
+								{
+									"key": "foo",
+									"value": "bar"
+								}
+							]
+						},
+						"description": "Bad request (HTTP 400).\n\nTest invalid query parameter."
+					},
+					"response": []
+				},
+				{
+					"name": "query?foo=bar",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f940622e-f2dd-4c70-8042-66cb6aa1bf5a",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Header is correct\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.response.to.be.header(\"Content-Type\", \"text/plain; charset=utf-8\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "text/plain"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "foo=bar",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{url_base}}:{{port_fed}}/fdsnws/dataselect/1/query",
+							"host": [
+								"{{url_base}}"
+							],
+							"port": "{{port_fed}}",
+							"path": [
+								"fdsnws",
+								"dataselect",
+								"1",
+								"query"
+							]
+						},
+						"description": "Bad request (HTTP 400).\n\nTest invalid query parameter."
+					},
+					"response": []
+				},
+				{
+					"name": "query?quality=M",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f940622e-f2dd-4c70-8042-66cb6aa1bf5a",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Header is correct\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.response.to.be.header(\"Content-Type\", \"text/plain; charset=utf-8\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}:{{port_fed}}/fdsnws/dataselect/1/query?quality=M",
+							"host": [
+								"{{url_base}}"
+							],
+							"port": "{{port_fed}}",
+							"path": [
+								"fdsnws",
+								"dataselect",
+								"1",
+								"query"
+							],
+							"query": [
+								{
+									"key": "quality",
+									"value": "M"
+								}
+							]
+						},
+						"description": "Bad request (HTTP 400).\n\nTest invalid query parameter."
+					},
+					"response": []
+				},
+				{
+					"name": "query?quality=M",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f940622e-f2dd-4c70-8042-66cb6aa1bf5a",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Header is correct\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.response.to.be.header(\"Content-Type\", \"text/plain; charset=utf-8\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "quality=M\n\n* * * * 2019-01-01 2020-01-01",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{url_base}}:{{port_fed}}/fdsnws/dataselect/1/query",
+							"host": [
+								"{{url_base}}"
+							],
+							"port": "{{port_fed}}",
+							"path": [
+								"fdsnws",
+								"dataselect",
+								"1",
+								"query"
+							]
+						},
+						"description": "Bad request (HTTP 400).\n\nTest invalid query parameter."
+					},
+					"response": []
+				},
+				{
+					"name": "query?minimumlength=60.0",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f940622e-f2dd-4c70-8042-66cb6aa1bf5a",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Header is correct\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.response.to.be.header(\"Content-Type\", \"text/plain; charset=utf-8\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}:{{port_fed}}/fdsnws/dataselect/1/query?minimumlength=60.0",
+							"host": [
+								"{{url_base}}"
+							],
+							"port": "{{port_fed}}",
+							"path": [
+								"fdsnws",
+								"dataselect",
+								"1",
+								"query"
+							],
+							"query": [
+								{
+									"key": "minimumlength",
+									"value": "60.0"
+								}
+							]
+						},
+						"description": "Bad request (HTTP 400).\n\nTest invalid query parameter."
+					},
+					"response": []
+				},
+				{
+					"name": "query?minimumlength=60.0",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f940622e-f2dd-4c70-8042-66cb6aa1bf5a",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Header is correct\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.response.to.be.header(\"Content-Type\", \"text/plain; charset=utf-8\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "minimumlength=60.0\n\n* * * * 2019-01-01 2020-01-01",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{url_base}}:{{port_fed}}/fdsnws/dataselect/1/query",
+							"host": [
+								"{{url_base}}"
+							],
+							"port": "{{port_fed}}",
+							"path": [
+								"fdsnws",
+								"dataselect",
+								"1",
+								"query"
+							]
+						},
+						"description": "Bad request (HTTP 400).\n\nTest invalid query parameter."
+					},
+					"response": []
+				},
+				{
+					"name": "query?longestonly=True",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f940622e-f2dd-4c70-8042-66cb6aa1bf5a",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Header is correct\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.response.to.be.header(\"Content-Type\", \"text/plain; charset=utf-8\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}:{{port_fed}}/fdsnws/dataselect/1/query?longestonly=true",
+							"host": [
+								"{{url_base}}"
+							],
+							"port": "{{port_fed}}",
+							"path": [
+								"fdsnws",
+								"dataselect",
+								"1",
+								"query"
+							],
+							"query": [
+								{
+									"key": "longestonly",
+									"value": "true"
+								}
+							]
+						},
+						"description": "Bad request (HTTP 400).\n\nTest invalid query parameter."
+					},
+					"response": []
+				},
+				{
+					"name": "query?longestonly=True",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f940622e-f2dd-4c70-8042-66cb6aa1bf5a",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Header is correct\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.response.to.be.header(\"Content-Type\", \"text/plain; charset=utf-8\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "longestonly=true\n\n* * * * 2019-01-01 2020-01-01",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{url_base}}:{{port_fed}}/fdsnws/dataselect/1/query",
+							"host": [
+								"{{url_base}}"
+							],
+							"port": "{{port_fed}}",
+							"path": [
+								"fdsnws",
+								"dataselect",
+								"1",
+								"query"
+							]
+						},
+						"description": "Bad request (HTTP 400).\n\nTest invalid query parameter."
+					},
+					"response": []
+				},
+				{
+					"name": "query?net=CH&sta=HASLI",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e770af07-24cd-4be2-8192-715d61948336",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Header is correct\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.response.to.be.header(\"Content-Type\", \"application/vnd.fdsn.mseed\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}:{{port_fed}}/fdsnws/dataselect/1/query?net=CH&sta=HASLI&cha=BHZ&start=2019-01-01&end=2019-01-01T00:01:00",
+							"host": [
+								"{{url_base}}"
+							],
+							"port": "{{port_fed}}",
+							"path": [
+								"fdsnws",
+								"dataselect",
+								"1",
+								"query"
+							],
+							"query": [
+								{
+									"key": "net",
+									"value": "CH"
+								},
+								{
+									"key": "sta",
+									"value": "HASLI"
+								},
+								{
+									"key": "cha",
+									"value": "BHZ"
+								},
+								{
+									"key": "start",
+									"value": "2019-01-01"
+								},
+								{
+									"key": "end",
+									"value": "2019-01-01T00:01:00"
+								}
+							]
+						},
+						"description": "Single node, single network"
+					},
+					"response": []
+				},
+				{
+					"name": "query?net=CH&sta=HASLI",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e770af07-24cd-4be2-8192-715d61948336",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Header is correct\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.response.to.be.header(\"Content-Type\", \"application/vnd.fdsn.mseed\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "CH HASLI * BHZ 2019-01-01 2019-01-01T00:01:00"
+						},
+						"url": {
+							"raw": "{{url_base}}:{{port_fed}}/fdsnws/dataselect/1/query",
+							"host": [
+								"{{url_base}}"
+							],
+							"port": "{{port_fed}}",
+							"path": [
+								"fdsnws",
+								"dataselect",
+								"1",
+								"query"
+							]
+						},
+						"description": "Single node, single network"
+					},
+					"response": []
+				},
+				{
+					"name": "query?net=CH&sta=HASLI,DAVOX",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e770af07-24cd-4be2-8192-715d61948336",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Header is correct\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.response.to.be.header(\"Content-Type\", \"application/vnd.fdsn.mseed\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}:{{port_fed}}/fdsnws/dataselect/1/query?net=CH&sta=HASLI,DAVOX&cha=BHZ&start=2019-01-01&end=2019-01-01T00:01:00",
+							"host": [
+								"{{url_base}}"
+							],
+							"port": "{{port_fed}}",
+							"path": [
+								"fdsnws",
+								"dataselect",
+								"1",
+								"query"
+							],
+							"query": [
+								{
+									"key": "net",
+									"value": "CH"
+								},
+								{
+									"key": "sta",
+									"value": "HASLI,DAVOX"
+								},
+								{
+									"key": "cha",
+									"value": "BHZ"
+								},
+								{
+									"key": "start",
+									"value": "2019-01-01"
+								},
+								{
+									"key": "end",
+									"value": "2019-01-01T00:01:00"
+								}
+							]
+						},
+						"description": "Single node, single network, multi stations"
+					},
+					"response": []
+				},
+				{
+					"name": "query?net=CH&sta=HASLI,DAVOX",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e770af07-24cd-4be2-8192-715d61948336",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Header is correct\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.response.to.be.header(\"Content-Type\", \"application/vnd.fdsn.mseed\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "CH HASLI * BHZ 2019-01-01 2019-01-01T00:01:00\nCH DAVOX * BHZ 2019-01-01 2019-01-01T00:01:00"
+						},
+						"url": {
+							"raw": "{{url_base}}:{{port_fed}}/fdsnws/dataselect/1/query",
+							"host": [
+								"{{url_base}}"
+							],
+							"port": "{{port_fed}}",
+							"path": [
+								"fdsnws",
+								"dataselect",
+								"1",
+								"query"
+							]
+						},
+						"description": "Single node, single network, multi stations"
+					},
+					"response": []
+				}
+			],
+			"description": "API and integration tests for the EIDA federator webservice (fdsnws-dataselect endpoint).",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "1c1d1970-c15f-47bf-825d-a12ef046c2a2",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "822a5f09-ea40-46cc-9f7e-ce224d65a412",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "eidaws-wfcatalog",
+			"item": [
+				{
+					"name": "version",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ec8be5c7-b561-4351-af21-690e8249140c",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Header is correct\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.response.to.be.header(\"Content-Type\", \"text/plain; charset=utf-8\");",
+									"});",
+									"",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.match(/^1\\./);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}:{{port_fed}}/eidaws/wfcatalog/1/version",
+							"host": [
+								"{{url_base}}"
+							],
+							"port": "{{port_fed}}",
+							"path": [
+								"eidaws",
+								"wfcatalog",
+								"1",
+								"version"
+							]
+						},
+						"description": "validate version"
+					},
+					"response": []
+				},
+				{
+					"name": "query?foo=bar",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f940622e-f2dd-4c70-8042-66cb6aa1bf5a",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Header is correct\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.response.to.be.header(\"Content-Type\", \"text/plain; charset=utf-8\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}:{{port_fed}}/eidaws/wfcatalog/1/query?foo=bar",
+							"host": [
+								"{{url_base}}"
+							],
+							"port": "{{port_fed}}",
+							"path": [
+								"eidaws",
+								"wfcatalog",
+								"1",
+								"query"
+							],
+							"query": [
+								{
+									"key": "foo",
+									"value": "bar"
+								}
+							]
+						},
+						"description": "Bad request (HTTP 400).\n\nTest invalid query parameter."
+					},
+					"response": []
+				},
+				{
+					"name": "query?foo=bar",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f940622e-f2dd-4c70-8042-66cb6aa1bf5a",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Header is correct\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.response.to.be.header(\"Content-Type\", \"text/plain; charset=utf-8\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "text/plain"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "foo=bar",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{url_base}}:{{port_fed}}/eidaws/wfcatalog/1/query",
+							"host": [
+								"{{url_base}}"
+							],
+							"port": "{{port_fed}}",
+							"path": [
+								"eidaws",
+								"wfcatalog",
+								"1",
+								"query"
+							]
+						},
+						"description": "Bad request (HTTP 400).\n\nTest invalid query parameter."
+					},
+					"response": []
+				},
+				{
+					"name": "query",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f940622e-f2dd-4c70-8042-66cb6aa1bf5a",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Header is correct\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.response.to.be.header(\"Content-Type\", \"text/plain; charset=utf-8\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}:{{port_fed}}/eidaws/wfcatalog/1/query",
+							"host": [
+								"{{url_base}}"
+							],
+							"port": "{{port_fed}}",
+							"path": [
+								"eidaws",
+								"wfcatalog",
+								"1",
+								"query"
+							]
+						},
+						"description": "Bad request (HTTP 400).\n\nTest invalid query parameter (no time constraints)."
+					},
+					"response": []
+				},
+				{
+					"name": "query?starttime=2019-01-01",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f940622e-f2dd-4c70-8042-66cb6aa1bf5a",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Header is correct\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.response.to.be.header(\"Content-Type\", \"text/plain; charset=utf-8\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}:{{port_fed}}/eidaws/wfcatalog/1/query?starttime=2019-01-01",
+							"host": [
+								"{{url_base}}"
+							],
+							"port": "{{port_fed}}",
+							"path": [
+								"eidaws",
+								"wfcatalog",
+								"1",
+								"query"
+							],
+							"query": [
+								{
+									"key": "starttime",
+									"value": "2019-01-01"
+								}
+							]
+						},
+						"description": "Bad request (HTTP 400).\n\nTest invalid query parameter (missing time constraints)."
+					},
+					"response": []
+				},
+				{
+					"name": "query?endtime=2019-01-01",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f940622e-f2dd-4c70-8042-66cb6aa1bf5a",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Header is correct\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.response.to.be.header(\"Content-Type\", \"text/plain; charset=utf-8\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}:{{port_fed}}/eidaws/wfcatalog/1/query?endtime=2019-01-01",
+							"host": [
+								"{{url_base}}"
+							],
+							"port": "{{port_fed}}",
+							"path": [
+								"eidaws",
+								"wfcatalog",
+								"1",
+								"query"
+							],
+							"query": [
+								{
+									"key": "endtime",
+									"value": "2019-01-01"
+								}
+							]
+						},
+						"description": "Bad request (HTTP 400).\n\nTest invalid query parameter (missing time constraints)."
+					},
+					"response": []
+				},
+				{
+					"name": "query?net=CH&sta=HASLI",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e770af07-24cd-4be2-8192-715d61948336",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Header is correct\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.response.to.be.header(\"Content-Type\", \"application/json\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}:{{port_fed}}/eidaws/wfcatalog/1/query?net=CH&sta=HASLI&start=2018-01-01&end=2018-01-02",
+							"host": [
+								"{{url_base}}"
+							],
+							"port": "{{port_fed}}",
+							"path": [
+								"eidaws",
+								"wfcatalog",
+								"1",
+								"query"
+							],
+							"query": [
+								{
+									"key": "net",
+									"value": "CH"
+								},
+								{
+									"key": "sta",
+									"value": "HASLI"
+								},
+								{
+									"key": "start",
+									"value": "2018-01-01"
+								},
+								{
+									"key": "end",
+									"value": "2018-01-02"
+								}
+							]
+						},
+						"description": "Single node, single network"
+					},
+					"response": []
+				},
+				{
+					"name": "query?net=CH&sta=HASLI,DAVOX",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e770af07-24cd-4be2-8192-715d61948336",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Header is correct\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.response.to.be.header(\"Content-Type\", \"application/json\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}:{{port_fed}}/eidaws/wfcatalog/1/query?net=CH&start=2018-01-01&end=2018-01-02&sta=HASLI,DAVOX",
+							"host": [
+								"{{url_base}}"
+							],
+							"port": "{{port_fed}}",
+							"path": [
+								"eidaws",
+								"wfcatalog",
+								"1",
+								"query"
+							],
+							"query": [
+								{
+									"key": "net",
+									"value": "CH"
+								},
+								{
+									"key": "start",
+									"value": "2018-01-01"
+								},
+								{
+									"key": "end",
+									"value": "2018-01-02"
+								},
+								{
+									"key": "sta",
+									"value": "HASLI,DAVOX"
+								}
+							]
+						},
+						"description": "Single node, single network, multi stations"
+					},
+					"response": []
+				},
+				{
+					"name": "query?net=CH",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e770af07-24cd-4be2-8192-715d61948336",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Header is correct\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.response.to.be.header(\"Content-Type\", \"application/json\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}:{{port_fed}}/eidaws/wfcatalog/1/query?net=CH&start=2018-01-01&end=2018-01-02",
+							"host": [
+								"{{url_base}}"
+							],
+							"port": "{{port_fed}}",
+							"path": [
+								"eidaws",
+								"wfcatalog",
+								"1",
+								"query"
+							],
+							"query": [
+								{
+									"key": "net",
+									"value": "CH"
+								},
+								{
+									"key": "start",
+									"value": "2018-01-01"
+								},
+								{
+									"key": "end",
+									"value": "2018-01-02"
+								}
+							]
+						},
+						"description": "Single network, multi stations"
+					},
+					"response": []
+				}
+			],
+			"description": "API and integration tests for the EIDA federator webservice (eidaws-wfcatalog endpoint).",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "672eff26-3c87-4eb7-bb72-d56eb8010581",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "78391cb4-6d31-4cb1-b076-498972b72613",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "83356f94-2a0f-4283-ba81-554129297ca0",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "39ed57f0-8af3-4956-a8bc-6942711f01ee",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
