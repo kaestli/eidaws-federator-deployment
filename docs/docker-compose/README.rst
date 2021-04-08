@@ -130,6 +130,10 @@ Architecture
 .. image:: diagrams/eidaws-federator-arch.svg
    :align: center
 
+The Compose deployment will deploy the system depicted in the figure above.
+Dashed lines mark the container image components involved. Their corresponding
+names are indicated in red.
+
 ``eidaws-federator`` provides a single, unified gateway to the waveform
 archives and the station and quality control information from the entire EIDA
 data holdings, i.e. from all the datacenters (DCs) in EIDA. It's *frontend
