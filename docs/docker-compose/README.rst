@@ -131,7 +131,7 @@ Architecture
    :align: center
 
 The Compose deployment will deploy the system depicted in the figure above.
-Dashed lines mark the container image components involved. Their corresponding
+Dashed boxes mark the container image components involved. Their corresponding
 names are indicated in red.
 
 ``eidaws-federator`` provides a single, unified gateway to the waveform
