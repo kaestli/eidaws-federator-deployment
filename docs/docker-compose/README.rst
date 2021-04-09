@@ -29,7 +29,7 @@ required:
 
 .. code::
 
-  $ git clone --recurse-submodules https://github.com/damb/eidaws-federator-deployment.git && \
+  $ git clone --recurse-submodules https://github.com/EIDA/eidaws-federator-deployment.git && \
     cd eidaws-federator-deployment/docker-compose
 
 

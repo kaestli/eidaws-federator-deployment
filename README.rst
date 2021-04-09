@@ -3,7 +3,7 @@ eidaws-federator Containerized Deployment
 =========================================
 
 This repository contains the code for deploying `eidaws-federator
-<https://github.com/damb/eidaws/tree/master/eidaws.federator/README.rst>`_ with
+<https://github.com/EIDA/eidaws/tree/master/eidaws.federator/README.rst>`_ with
 a container engine such as `Podman <https://podman.io/>`_ or `Docker
 <https://www.docker.com/>`_.
 
@@ -17,7 +17,7 @@ Issues
 ======
 
 Please report bugs, issues, feature requests, etc on `GitHub
-<https://github.com/damb/scdetect/issues>`_.
+<https://github.com/EIDA/eida-federator-deployment/issues>`_.
 
 License
 =======
