@@ -125,7 +125,7 @@ proxy-netloc: eidaws-endpoint-proxy:8090
 # https://docs.python.org/3/library/logging.config.html#logging-config-fileformat.
 # Default: None
 #
-logging-conf: /etc/eidaws/logging.conf
+logging-conf: /etc/eidaws/eidaws_federator_logging.conf
 #
 # ----
 # Routing specific configuration options

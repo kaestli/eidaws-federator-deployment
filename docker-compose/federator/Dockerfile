@@ -13,9 +13,9 @@
 # Base image
 FROM docker.io/phusion/baseimage:bionic-1.0.0
 
-ARG INSTANCES_DATASELECT_MINISEED=8
-ARG INSTANCES_STATION_TEXT=4
-ARG INSTANCES_STATION_XML=8
+ARG INSTANCES_DATASELECT_MINISEED=12
+ARG INSTANCES_STATION_TEXT=12
+ARG INSTANCES_STATION_XML=12
 ARG INSTANCES_WFCATALOG_JSON=6
 ARG DIR_CONTAINERFILE=federator
 
@@ -47,7 +47,7 @@ RUN mkdir /etc/service/nginx && \
 
 # Install backend services
 RUN mkdir -p /var/www/eidaws-federator /run/eidaws-federator \
-  /var/log/eidaws-federator && chown www-data:www-data /run/eidaws-federator
+  /var/log/eidaws && chown www-data:www-data /run/eidaws-federator
 COPY $DIR_CONTAINERFILE/../eidaws/eidaws.utils /usr/local/src/eidaws/eidaws.utils/
 COPY $DIR_CONTAINERFILE/../eidaws/eidaws.federator \
   /usr/local/src/eidaws/eidaws.federator/
@@ -60,13 +60,12 @@ RUN python3.7 -m venv /var/www/eidaws-federator/venv && \
   pip install -e /usr/local/src/eidaws/eidaws.federator && deactivate"
 
 # Backend service configuration files
-COPY $DIR_CONTAINERFILE/*.yml \
-  $DIR_CONTAINERFILE/logging.conf /etc/eidaws/
+COPY $DIR_CONTAINERFILE/eidaws_federator_*.yml \
+  $DIR_CONTAINERFILE/eidaws_federator_logging.conf /etc/eidaws/
 COPY $DIR_CONTAINERFILE/eidaws-federator.syslog-ng.conf \
   /etc/syslog-ng/conf.d/eidaws-federator.conf
-COPY $DIR_CONTAINERFILE/eidaws-federator.logrotate.conf \
-  /etc/logrotate.d/eidaws-federator
-RUN chmod 644 /etc/logrotate.d/eidaws-federator
+COPY $DIR_CONTAINERFILE/eidaws.logrotate.conf /etc/logrotate.d/eidaws
+RUN chmod 644 /etc/logrotate.d/eidaws
 
 # Add backend services with installation script
 COPY $DIR_CONTAINERFILE/*.template $DIR_CONTAINERFILE/install_backend.sh /tmp/
@@ -82,6 +81,14 @@ RUN chmod +x /tmp/install_backend.sh && \
 
 # Static content
 COPY $DIR_CONTAINERFILE/static /var/www/eidaws-federator/static
+
+# Setup crawling including cronjob
+COPY $DIR_CONTAINERFILE/eidaws_crawl_*.yml \
+  $DIR_CONTAINERFILE/eidaws_crawl_logging.conf /etc/eidaws/
+COPY $DIR_CONTAINERFILE/eidaws-crawl.syslog-ng.conf \
+  /etc/syslog-ng/conf.d/eidaws-crawl.conf
+
+RUN echo "0 4 * * * root /var/www/eidaws-federator/venv/bin/eida-crawl-fdsnws-station" >> /etc/crontab
 
 # Expose HTTP default port
 EXPOSE 8080
