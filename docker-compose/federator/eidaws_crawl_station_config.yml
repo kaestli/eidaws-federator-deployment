@@ -208,6 +208,11 @@ worker-pool-size: 10
 # progress-bar: False
 #
 # ----
+# # Defines if stream epochs are sorted alphanumerically before crawling.
+#
+# sorted: False
+#
+# ----
 # Absolute path to a process ID locking file in order to prevent from having
 # multiple crawling processes running concurrently.
 #
