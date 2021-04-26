@@ -41,9 +41,7 @@ RUN mkdir /etc/service/nginx && \
 
 # Install backend services
 RUN mkdir -p /var/www/eidaws-endpoint-proxy /run/eidaws-endpoint-proxy \
-  /etc/eidaws /usr/local/src \
-  /var/log/eidaws-endpoint-proxy && \
-  chown www-data:www-data /run/eidaws-endpoint-proxy
+  /var/log/eidaws && chown www-data:www-data /run/eidaws-endpoint-proxy
 COPY $DIR_CONTAINERFILE/../eidaws/eidaws.utils /usr/local/src/eidaws/eidaws.utils/
 COPY $DIR_CONTAINERFILE/../eidaws/eidaws.endpoint_proxy \
   /usr/local/src/eidaws/eidaws.endpoint_proxy/
@@ -56,7 +54,7 @@ RUN python3.7 -m venv /var/www/eidaws-endpoint-proxy/venv && \
   pip install -e /usr/local/src/eidaws/eidaws.endpoint_proxy && deactivate"
 
 # Backend service configuration files
-COPY $DIR_CONTAINERFILE/logging.conf /etc/eidaws/
+COPY $DIR_CONTAINERFILE/*logging.conf /etc/eidaws/
 COPY $DIR_CONTAINERFILE/eidaws-endpoint-proxy.syslog-ng.conf \
   /etc/syslog-ng/conf.d/eidaws-endpoint-proxy.conf
 COPY $DIR_CONTAINERFILE/eidaws-endpoint-proxy.logrotate.conf \
