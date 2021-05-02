@@ -83,12 +83,17 @@ RUN chmod +x /tmp/install_backend.sh && \
 COPY $DIR_CONTAINERFILE/static /var/www/eidaws-federator/static
 
 # Setup crawling including cronjob
+COPY $DIR_CONTAINERFILE/eida-crawl-fdsnws-station.sh \
+  /usr/local/bin/eidaws/eida-crawl-fdsnws-station.sh
 COPY $DIR_CONTAINERFILE/eidaws_crawl_*.yml \
   $DIR_CONTAINERFILE/eidaws_crawl_logging.conf /etc/eidaws/
 COPY $DIR_CONTAINERFILE/eidaws-crawl.syslog-ng.conf \
   /etc/syslog-ng/conf.d/eidaws-crawl.conf
 
-RUN echo "0 4 * * * root /var/www/eidaws-federator/venv/bin/eida-crawl-fdsnws-station" >> /etc/crontab
+RUN mkdir -p /var/lib/eidaws && \
+  echo "[]" >> /var/lib/eidaws/eida-crawl-fdsnws-station.history && \
+  chmod 744 /usr/local/bin/eidaws/eida-crawl-fdsnws-station.sh && \
+  echo "0 4 * * * root /usr/local/bin/eidaws/eida-crawl-fdsnws-station.sh" >> /etc/crontab
 
 # Expose HTTP default port
 EXPOSE 8080
