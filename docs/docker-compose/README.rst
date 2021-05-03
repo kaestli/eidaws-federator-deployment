@@ -119,6 +119,16 @@ and perform an inital harvesting run
     /var/www/eidaws-stationlite/venv/bin/eida-stationlite-harvest \
      --config /etc/eidaws/eidaws_stationlite_harvest_config.yml
 
+Note also that in order to warm up caches it might be of use to run
+
+.. code::
+
+  $ docker exec eidaws-federator \
+    /usr/local/bin/eidaws/eida-crawl-fdsnws-station.sh
+
+**after** harvesting routing information. The command might take several hours
+until completed.
+
 When the containers are running the service is available under
 ``http://localhost:8080`` (the internally used ``eidaws-stationlite`` routing
 service is available under ``http://localhost:8089``).
