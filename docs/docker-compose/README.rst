@@ -191,7 +191,8 @@ Features provided
 * NGINX_ + configurable number of standalone backend
   applications
 * Backend caching powered by a NGINX_ HTTP reverse caching proxy
-  (currently for ``fdsnws-station`` metadata, only)
+  (currently for ``fdsnws-station`` metadata, only) including crawling
+  facilities
 * Bandwith limitation while fetching data from endpoints (implemented by
   ``eidaws-endpoint-proxy``)
 * ``eidaws-stationlite`` deployed with `Apache2 <https://httpd.apache.org/>`_ +
