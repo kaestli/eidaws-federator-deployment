@@ -90,9 +90,7 @@ COPY $DIR_CONTAINERFILE/eidaws_crawl_*.yml \
 COPY $DIR_CONTAINERFILE/eidaws-crawl.syslog-ng.conf \
   /etc/syslog-ng/conf.d/eidaws-crawl.conf
 
-RUN mkdir -p /var/lib/eidaws && \
-  echo "[]" >> /var/lib/eidaws/eida-crawl-fdsnws-station.history && \
-  chmod 744 /usr/local/bin/eidaws/eida-crawl-fdsnws-station.sh && \
+RUN chmod 744 /usr/local/bin/eidaws/eida-crawl-fdsnws-station.sh && \
   echo "0 4 * * * root /usr/local/bin/eidaws/eida-crawl-fdsnws-station.sh" >> /etc/crontab
 
 # Expose HTTP default port
