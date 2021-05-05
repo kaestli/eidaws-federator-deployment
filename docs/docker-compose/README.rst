@@ -119,6 +119,16 @@ and perform an inital harvesting run
     /var/www/eidaws-stationlite/venv/bin/eida-stationlite-harvest \
      --config /etc/eidaws/eidaws_stationlite_harvest_config.yml
 
+Note also that in order to warm up caches it might be of use to run
+
+.. code::
+
+  $ docker exec eidaws-federator \
+    /usr/local/bin/eidaws/eida-crawl-fdsnws-station.sh
+
+**after** harvesting routing information. The command might take several hours
+until completed.
+
 When the containers are running the service is available under
 ``http://localhost:8080`` (the internally used ``eidaws-stationlite`` routing
 service is available under ``http://localhost:8089``).
@@ -144,17 +154,17 @@ dispatched and redirected to the corresponding federating instance. The
 federating service then follows the procedure:
 
 1. Check if the request was already received before and perform a frontend
-   cache lookup (currently fdsnws-station metadata, only). If there is a cache
-   hit the response is immediately returned to the client.
+   cache lookup (currently ``fdsnws-station`` metadata, only). If there is a
+   cache hit the response is immediately returned to the client.
 2. In case of a frontend cache miss requested stream epochs are fully resolved
    by means of ``eidaws-stationlite`` routing service. Thus, from now on, data is
    requested based on a granular (devide-and-conquer) request strategy from the
    *reverse caching proxy*.
 3. Again, the reverse caching proxy has an internal cache (backend cache)
-   (currently fdsnws-station metadata, only). Only in case the reverse caching
-   proxy has a cache miss the (still granular) request is redirected to so
-   called *bottleneck proxies*. Bottleneck proxies implement access limitation
-   in order to prevent EIDA DCs from being overloaded.
+   (currently ``fdsnws-station`` metadata, only). Only in case the reverse
+   caching proxy has a cache miss the (still granular) request is redirected to
+   so called *bottleneck proxies*. Bottleneck proxies implement access
+   limitation in order to prevent EIDA DCs from being overloaded.
 4. Depending on the federated resource (``service-dataformat``) the federating
    instance firstly merges the granularly requested data before streaming the
    content back to the client.
@@ -165,10 +175,14 @@ Static content is served by the frontend reverse proxy, directly.
 
 ``eidaws-stationlite``'s harvesting facility periodically harvests routing
 information from `eidaws-routing <https://github.com/EIDA/routing>`_
-``localconfig`` configuration files and to some extent from *fdsnws-station*.
+``localconfig`` configuration files and to some extent from ``fdsnws-station``.
 Hence, storing the routing information adds another, third, caching layer to
 the overall architecture.
 
+In order to keep the backend cache for ``fdsnws-station`` metadata requests
+hot, ``eidaws-federator`` implements a crawler which again is based on
+``eidaws-stationlite`` routing information. This way, federated
+``fdsnws-station`` metadata requests can be served more efficiently.
 
 Features provided
 =================
@@ -177,7 +191,8 @@ Features provided
 * NGINX_ + configurable number of standalone backend
   applications
 * Backend caching powered by a NGINX_ HTTP reverse caching proxy
-  (currently for ``fdsnws-station`` metadata, only)
+  (currently for ``fdsnws-station`` metadata, only) including crawling
+  facilities
 * Bandwith limitation while fetching data from endpoints (implemented by
   ``eidaws-endpoint-proxy``)
 * ``eidaws-stationlite`` deployed with `Apache2 <https://httpd.apache.org/>`_ +

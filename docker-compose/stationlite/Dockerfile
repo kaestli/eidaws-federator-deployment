@@ -36,8 +36,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
                                        libapache2-mod-wsgi-py3
 
 # Install backend services
-RUN mkdir -p /var/www/eidaws-stationlite /etc/eidaws \
-  /usr/local/src /var/log/eidaws-stationlite
+RUN mkdir -p /var/www/eidaws-stationlite /var/log/eidaws
 COPY $DIR_CONTAINERFILE/../eidaws/eidaws.utils /usr/local/src/eidaws/eidaws.utils/
 COPY $DIR_CONTAINERFILE/../eidaws/eidaws.stationlite \
   /usr/local/src/eidaws/eidaws.stationlite/
@@ -51,7 +50,7 @@ RUN virtualenv -p $(which python3.6) /var/www/eidaws-stationlite/venv && \
   pip install -e /usr/local/src/eidaws/eidaws.stationlite[postgres] && deactivate"
 
 # Copy eidaws-stationlite(-harvest) configuration files
-COPY $DIR_CONTAINERFILE/*.yml $DIR_CONTAINERFILE/logging*.conf \
+COPY $DIR_CONTAINERFILE/*.yml $DIR_CONTAINERFILE/*logging.conf \
   $DIR_CONTAINERFILE/env /etc/eidaws/
 COPY $DIR_CONTAINERFILE/eidaws-stationlite.syslog-ng.conf \
   /etc/syslog-ng/conf.d/eidaws-stationlite.conf

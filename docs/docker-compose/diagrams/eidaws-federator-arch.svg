@@ -8,14 +8,44 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="283.84418mm"
-   height="196.83295mm"
-   viewBox="0 0 283.84418 196.83295"
+   height="210.26715mm"
+   viewBox="0 0 283.84417 210.26716"
    version="1.1"
    id="svg8"
-   inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
+   inkscape:version="1.0.2 (e86c870879, 2021-01-15)"
    sodipodi:docname="eidaws-federator-arch.svg">
   <defs
      id="defs2">
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker3558"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path3556"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker3146"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path3144"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(0.4,0,0,0.4,4,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
     <marker
        inkscape:stockid="Arrow1Mstart"
        orient="auto"
@@ -23,7 +53,8 @@
        refX="0"
        id="marker38129"
        style="overflow:visible"
-       inkscape:isstock="true">
+       inkscape:isstock="true"
+       inkscape:collect="always">
       <path
          id="path38127"
          d="M 0,0 5,-5 -12.5,0 5,5 Z"
@@ -38,7 +69,8 @@
        refX="0"
        id="marker37747"
        style="overflow:visible"
-       inkscape:isstock="true">
+       inkscape:isstock="true"
+       inkscape:collect="always">
       <path
          id="path37745"
          d="M 0,0 5,-5 -12.5,0 5,5 Z"
@@ -949,6 +981,38 @@
          style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
          transform="matrix(-0.4,0,0,-0.4,-4,0)" />
     </marker>
+    <marker
+       inkscape:stockid="Arrow1Mstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker22385-1"
+       style="overflow:visible"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         id="path22383-2"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(0.4,0,0,0.4,4,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker22051-7"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mend"
+       inkscape:collect="always">
+      <path
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path22049-0"
+         inkscape:connector-curvature="0" />
+    </marker>
   </defs>
   <sodipodi:namedview
      id="base"
@@ -957,9 +1021,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.6799137"
-     inkscape:cx="632.63019"
-     inkscape:cy="467.69668"
+     inkscape:zoom="1.1878784"
+     inkscape:cx="590.34967"
+     inkscape:cy="385.05998"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -976,8 +1040,8 @@
     <inkscape:grid
        type="xygrid"
        id="grid3713"
-       originx="-0.15916702"
-       originy="-31.885014" />
+       originx="-0.15916699"
+       originy="-31.885027" />
   </sodipodi:namedview>
   <metadata
      id="metadata5">
@@ -987,7 +1051,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -997,27 +1061,27 @@
      id="layer1"
      transform="translate(-0.15916699,-99.685553)">
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:0.795, 0.795;stroke-dashoffset:0;stroke-opacity:1"
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:0.795, 0.795;stroke-dashoffset:0;stroke-opacity:1"
        id="rect37573"
        width="89.958336"
        height="28.240297"
-       x="111.65417"
-       y="229.18385" />
+       x="105.83333"
+       y="242.61806" />
     <path
        style="fill:none;stroke:#000000;stroke-width:0.265;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#marker21685-1);marker-end:url(#marker21363-5)"
-       d="M 112.44792,206.51257 V 217.0959 H 127 l 0,10.77756"
+       d="M 112.44792,206.51257 V 217.0959 H 127 v 25.32963"
        id="path21353-8"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cccc" />
     <path
        style="fill:none;stroke:#000000;stroke-width:0.264583;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#marker30945);marker-end:url(#marker30587)"
-       d="m 129.64583,227.87346 v -13.42339 h -14.55208 v -55.5625"
+       d="m 129.64583,242.42553 v -27.97546 h -14.55208 v -55.5625"
        id="path30577"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cccc" />
     <path
        style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#marker19877-6);marker-end:url(#marker19579-8)"
-       d="m 117.73958,135.07507 v 76.72916 h 14.55209 v 16.06923"
+       d="m 117.73958,135.07507 v 76.72916 h 14.55209 v 30.6213"
        id="path19569-6"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cccc" />
@@ -1029,19 +1093,19 @@
        inkscape:connector-curvature="0" />
     <path
        style="fill:none;stroke:#000000;stroke-width:0.265;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#marker21685);marker-end:url(#marker21363)"
-       d="M 96.572915,206.51257 V 217.0959 H 84.666666 l 10e-7,10.77756"
+       d="m 96.572915,206.51257 v 10.58333 h -7.937498 v 25.32963"
        id="path21353"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cccc" />
     <path
-       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#marker20529);marker-end:url(#marker20219)"
-       d="m 93.927082,158.88757 v 55.5625 h -11.90625 l 10e-7,13.42339"
+       style="fill:none;stroke:#000000;stroke-width:0.265;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#marker20529);marker-end:url(#marker20219)"
+       d="m 93.927082,158.88757 v 55.5625 h -7.937499 v 27.97546"
        id="path20209"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cccc" />
     <path
-       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#marker19877);marker-end:url(#marker19579)"
-       d="m 91.281249,135.07507 v 76.72916 H 79.375 v 16.06923"
+       style="fill:none;stroke:#000000;stroke-width:0.265;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#marker19877);marker-end:url(#marker19579)"
+       d="m 91.281249,135.07507 v 76.72916 H 83.34375 v 30.6213"
        id="path19569"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cccc" />
@@ -1125,17 +1189,17 @@
     <path
        inkscape:connector-curvature="0"
        id="path22041"
-       d="m 136.26042,245.07137 v 17.19792"
+       d="m 130.43958,258.50564 v 17.19792"
        style="fill:none;stroke:#000000;stroke-width:0.265;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#marker22385);marker-end:url(#marker22051)" />
     <rect
        style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.264583;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       y="231.38336"
-       x="114.30001"
+       y="244.81764"
+       x="108.47917"
        height="13.229148"
        width="42.333332"
        id="rect3715-3" />
     <g
-       transform="translate(42.862512,28.769287)"
+       transform="translate(37.041673,42.203146)"
        style="fill:#ffffff;fill-opacity:1;stroke-width:0.265;stroke-miterlimit:4;stroke-dasharray:none"
        id="g4562">
       <ellipse
@@ -1166,7 +1230,7 @@
     <g
        id="g4562-7"
        style="fill:#ffffff;fill-opacity:1;stroke-width:0.265;stroke-miterlimit:4;stroke-dasharray:none"
-       transform="translate(-31.75,-6.3499931)">
+       transform="translate(-37.570837,7.0838001)">
       <ellipse
          ry="2.6458333"
          rx="13.229166"
@@ -1322,17 +1386,17 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:1.25;font-family:'DejaVu Sans Mono';-inkscape-font-specification:'DejaVu Sans Mono';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       x="135.25471"
-       y="236.67487"
+       x="129.43388"
+       y="250.1093"
        id="text37571"><tspan
          sodipodi:role="line"
          id="tspan37569"
-         x="135.25471"
-         y="236.67487"
+         x="129.43388"
+         y="250.1093"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:'DejaVu Sans Mono';-inkscape-font-specification:'DejaVu Sans Mono';text-align:center;text-anchor:middle;stroke-width:0.264583">eidaws-stationlite</tspan><tspan
          sodipodi:role="line"
-         x="135.25471"
-         y="241.08459"
+         x="129.43388"
+         y="254.51903"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:'DejaVu Sans Mono';-inkscape-font-specification:'DejaVu Sans Mono';text-align:center;text-anchor:middle;stroke-width:0.264583"
          id="tspan37723">(routing)</tspan></text>
     <text
@@ -1576,13 +1640,13 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:1.25;font-family:'DejaVu Sans Mono';-inkscape-font-specification:'DejaVu Sans Mono';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       x="82.020836"
-       y="253.21124"
+       x="76.200073"
+       y="266.64609"
        id="text37708"><tspan
          sodipodi:role="line"
          id="tspan37706"
-         x="82.020836"
-         y="253.21124"
+         x="76.200073"
+         y="266.64609"
          style="stroke-width:0.264583">Frontend cache</tspan></text>
     <text
        xml:space="preserve"
@@ -1595,8 +1659,8 @@
        id="rect37725"
        width="39.687508"
        height="23.812506"
-       x="160.33734"
-       y="231.38344" />
+       x="154.51651"
+       y="244.8177" />
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:1.25;font-family:'Courier New';-inkscape-font-specification:'Courier New';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
@@ -1606,45 +1670,45 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:1.25;font-family:'Courier New';-inkscape-font-specification:'Courier New';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       x="180.07491"
-       y="239.85014"
+       x="174.25407"
+       y="253.28465"
        id="text37733"><tspan
          sodipodi:role="line"
          id="tspan37731"
-         x="180.07491"
-         y="239.85014"
+         x="174.25407"
+         y="253.28465"
          style="font-size:3.175px;stroke-width:0.264583">from eidaws-routing</tspan><tspan
          sodipodi:role="line"
-         x="180.07491"
-         y="244.25987"
+         x="174.25407"
+         y="257.69437"
          style="font-size:3.175px;stroke-width:0.264583"
          id="tspan37735">localconfig</tspan><tspan
          sodipodi:role="line"
-         x="180.07491"
-         y="248.66959"
+         x="174.25407"
+         y="262.1041"
          style="font-size:3.175px;stroke-width:0.264583"
          id="tspan38800">+</tspan><tspan
          sodipodi:role="line"
-         x="180.07491"
-         y="253.07932"
+         x="174.25407"
+         y="266.51382"
          style="font-size:3.175px;stroke-width:0.264583"
          id="tspan38802"> fdsnws-station</tspan></text>
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.265;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#marker38129);marker-end:url(#marker37747)"
-       d="m 181.23965,262.26929 -2e-5,-6.61458"
+       d="m 175.41881,275.70356 -2e-5,-6.61458"
        id="path37737"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0" />
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:1.25;font-family:'DejaVu Sans Mono';-inkscape-font-specification:'DejaVu Sans Mono';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       x="180.22675"
-       y="235.3522"
+       x="174.40591"
+       y="248.78658"
        id="text38607"><tspan
          sodipodi:role="line"
          id="tspan38605"
-         x="180.22675"
-         y="235.3522"
+         x="174.40591"
+         y="248.78658"
          style="stroke-width:0.264583">Harvesting</tspan></text>
     <text
        xml:space="preserve"
@@ -1671,7 +1735,7 @@
     <g
        id="g4562-7-60"
        style="fill:#ffffff;fill-opacity:1;stroke-width:0.265;stroke-miterlimit:4;stroke-dasharray:none"
-       transform="translate(-31.750001,20.108339)">
+       transform="translate(-37.570838,33.542148)">
       <ellipse
          ry="2.6458333"
          rx="13.229166"
@@ -1700,13 +1764,13 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:1.25;font-family:'DejaVu Sans Mono';-inkscape-font-specification:'DejaVu Sans Mono';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       x="82.00618"
-       y="281.65442"
+       x="76.18541"
+       y="295.08936"
        id="text38668"><tspan
          sodipodi:role="line"
          id="tspan38666"
-         x="82.00618"
-         y="281.65442"
+         x="76.18541"
+         y="295.08936"
          style="stroke-width:0.264583">Distributed Storage</tspan></text>
     <text
        xml:space="preserve"
@@ -1717,17 +1781,17 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:1.25;font-family:'Courier New';-inkscape-font-specification:'Courier New';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       x="157.69147"
-       y="217.62486"
+       x="158.66762"
+       y="224.75932"
        id="text38676"><tspan
          sodipodi:role="line"
          id="tspan38674"
-         x="157.69147"
-         y="217.62486"
+         x="158.66762"
+         y="224.75932"
          style="stroke-width:0.264583">Resolve/Demux requested</tspan><tspan
          sodipodi:role="line"
-         x="157.69147"
-         y="222.03459"
+         x="158.66762"
+         y="229.16905"
          style="stroke-width:0.264583"
          id="tspan38790">stream epochs</tspan></text>
     <g
@@ -1835,7 +1899,7 @@
        style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:0.795, 0.795;stroke-dashoffset:0;stroke-opacity:1"
        id="rect37573-3"
        width="93.927078"
-       height="101.86458"
+       height="125.67706"
        x="34.395832"
        y="108.81096" />
     <text
@@ -1870,12 +1934,12 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777px;line-height:1.25;font-family:'DejaVu Sans Mono';-inkscape-font-specification:'DejaVu Sans Mono';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#d40000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       x="180.97374"
-       y="228.20367"
+       x="175.0618"
+       y="241.37567"
        id="text37571-6-2"><tspan
          sodipodi:role="line"
-         x="180.97374"
-         y="228.20367"
+         x="175.0618"
+         y="241.37567"
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:3.52777px;font-family:'DejaVu Sans Mono';-inkscape-font-specification:'DejaVu Sans Mono Bold';text-align:center;text-anchor:middle;fill:#d40000;stroke-width:0.264583"
          id="tspan37723-5-9">eidaws-stationlite</tspan></text>
     <rect
@@ -1883,17 +1947,17 @@
        id="rect37573-1"
        width="89.958336"
        height="28.240301"
-       x="111.65417"
-       y="263.13315" />
+       x="105.83333"
+       y="276.56812" />
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777px;line-height:1.25;font-family:'DejaVu Sans Mono';-inkscape-font-specification:'DejaVu Sans Mono';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#d40000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       x="175.41762"
-       y="289.85181"
+       x="170.07082"
+       y="303.30273"
        id="text37571-6-2-2"><tspan
          sodipodi:role="line"
-         x="175.41762"
-         y="289.85181"
+         x="170.07082"
+         y="303.30273"
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:3.52777px;font-family:'DejaVu Sans Mono';-inkscape-font-specification:'DejaVu Sans Mono Bold';text-align:center;text-anchor:middle;fill:#d40000;stroke-width:0.264583"
          id="tspan37723-5-9-7">eidaws-stationlite-psql</tspan></text>
     <rect
@@ -1901,23 +1965,66 @@
        id="rect37573-0"
        width="48.947918"
        height="62.17709"
-       x="57.414581"
-       y="229.19638" />
+       x="51.593788"
+       y="242.63058" />
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777px;line-height:1.25;font-family:'DejaVu Sans Mono';-inkscape-font-specification:'DejaVu Sans Mono';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#d40000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       x="82.019585"
-       y="289.85159"
+       x="76.198822"
+       y="303.28653"
        id="text37571-6-2-9"><tspan
          sodipodi:role="line"
-         x="82.019585"
-         y="289.85159"
+         x="76.198822"
+         y="303.28653"
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:3.52777px;font-family:'DejaVu Sans Mono';-inkscape-font-specification:'DejaVu Sans Mono Bold';text-align:center;text-anchor:middle;fill:#d40000;stroke-width:0.264583"
          id="tspan37723-5-9-3">eidaws-federator-redis</tspan></text>
+    <rect
+       id="rect3715-36"
+       width="42.333332"
+       height="15.875005"
+       x="37.041664"
+       y="214.90887"
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:1.25;font-family:'DejaVu Sans Mono';-inkscape-font-specification:'DejaVu Sans Mono';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="58.253979"
+       y="219.46559"
+       id="text38607-7"><tspan
+         sodipodi:role="line"
+         id="tspan38605-5"
+         x="58.253979"
+         y="219.46559"
+         style="stroke-width:0.264583">Crawling</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:1.25;font-family:'Courier New';-inkscape-font-specification:'Courier New';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="58.230808"
+       y="223.71129"
+       id="text37733-3"><tspan
+         sodipodi:role="line"
+         x="58.230808"
+         y="223.71129"
+         style="font-size:3.175px;stroke-width:0.264583"
+         id="tspan38802-9">uses</tspan><tspan
+         sodipodi:role="line"
+         x="58.230808"
+         y="228.12102"
+         style="font-size:3.175px;stroke-width:0.264583"
+         id="tspan1908">eidaws-stationlite</tspan></text>
+    <path
+       inkscape:connector-curvature="0"
+       id="path22041-9"
+       d="m 58.208334,209.35261 v 5.29167"
+       style="fill:none;stroke:#000000;stroke-width:0.265;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#marker22385-1);marker-end:url(#marker22051-7)" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#marker3146);marker-end:url(#marker3558)"
+       d="m 79.374998,222.58178 h 44.979162 v 19.84375"
+       id="path3136" />
   </g>
   <g
      inkscape:groupmode="layer"
      id="layer2"
      inkscape:label="Description"
-     transform="translate(-0.15916699,-12.685554)" />
+     transform="translate(-0.15916699,-12.685553)" />
 </svg>

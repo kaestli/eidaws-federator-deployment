@@ -42,7 +42,7 @@
 # https://docs.python.org/3/library/logging.config.html#logging-config-fileformat.
 # Default: None
 #
-logging-conf: /etc/eidaws/logging.conf
+logging-conf: /etc/eidaws/eidaws_proxy_logging.conf
 #
 # ----
 # Overall maximum number of concurrent HTTP connections to the proxied
