@@ -28,7 +28,7 @@ ${BIN} --exclude-domain ${ODC} \
   --history-include-supplementary-epochs >> /dev/null &
 pid=$!
 ${BIN} --domain ${ODC} \
-  --worker-pool-size 8 --timeout 120 \
+  --worker-pool-size 6 --timeout 120 \
   --level network station \
   --sorted \
   -P /var/tmp/eida-crawl-fdsnws-station-odc.pid >> /dev/null &
