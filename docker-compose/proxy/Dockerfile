@@ -1,17 +1,17 @@
 # Dockerizing eidaws-federator endpoint caching proxy
 #
 # Build Container:
-# docker build -t eidaws-endpoint-proxy:1.0 .
+# docker build -t eidaws-endpoint-proxy:1.1 .
 #
 # Run Container:
 # docker run [-d] [--rm] [--name eidaws-endpoint-proxy] \
-#   -p 8090:8090 eidaws-endpoint-proxy:1.0
+#   -p 8090:8090 eidaws-endpoint-proxy:1.1
 #
 # Modify running container:
 # docker exec -it eidaws-endpoint-proxy /bin/bash
 
 # Base image
-FROM docker.io/phusion/baseimage:bionic-1.0.0
+FROM docker.io/phusion/baseimage:focal-1.0.0
 
 ARG DIR_CONTAINERFILE=proxy
 
@@ -23,10 +23,9 @@ CMD ["/sbin/my_init"]
 
 # System dependencies
 RUN export DEBIAN_FRONTEND=noninteractive && \
-  apt-get update && apt-get install -y python3.7 \
-                                       python3.7-dev \
-                                       python3.7-venv \
+  apt-get update && apt-get install -y python3-dev \
                                        python3-pip \
+                                       python3-venv \
                                        nginx \
                                        nginx-extras
 
@@ -47,7 +46,7 @@ COPY $DIR_CONTAINERFILE/../eidaws/eidaws.endpoint_proxy \
   /usr/local/src/eidaws/eidaws.endpoint_proxy/
 
 # Setup virtualenv and install services
-RUN python3.7 -m venv /var/www/eidaws-endpoint-proxy/venv && \
+RUN python3.8 -m venv /var/www/eidaws-endpoint-proxy/venv && \
   /bin/bash -c "source /var/www/eidaws-endpoint-proxy/venv/bin/activate && \
   pip install --upgrade pip && \
   pip install -e /usr/local/src/eidaws/eidaws.utils && \

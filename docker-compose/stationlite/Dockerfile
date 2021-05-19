@@ -1,17 +1,17 @@
 # Dockerizing eidaws-stationlite
 #
 # Build Container:
-# docker build -t eidaws-stationlite:1.0 .
+# docker build -t eidaws-stationlite:1.1 .
 #
 # Run Container:
-# docker run [-d] [--rm] [--name eidaws-stationlite] -p 8090:8090 \
-#   eidaws-stationlite:1.0
+# docker run [-d] [--rm] [--name eidaws-stationlite] -p 8089:8089 \
+#   eidaws-stationlite:1.1
 #
 # Modify running container:
 # docker exec -it eidaws-stationlite /bin/bash
 
 # Base image
-FROM docker.io/phusion/baseimage:bionic-1.0.0
+FROM docker.io/phusion/baseimage:focal-1.0.0
 
 ARG DIR_CONTAINERFILE=stationlite
 
@@ -29,7 +29,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
   apt-get update && apt-get install -y python3-dev \
                                        python3-venv \
                                        python3-pip \
-                                       python-virtualenv \
+                                       python3-virtualenv \
                                        build-essential \
                                        libpq-dev \
                                        apache2 \
@@ -42,7 +42,7 @@ COPY $DIR_CONTAINERFILE/../eidaws/eidaws.stationlite \
   /usr/local/src/eidaws/eidaws.stationlite/
 
 # Setup virtualenv and install eidaws.stationlite distribution
-RUN virtualenv -p $(which python3.6) /var/www/eidaws-stationlite/venv && \
+RUN virtualenv /var/www/eidaws-stationlite/venv && \
   /bin/bash -c "source /var/www/eidaws-stationlite/venv/bin/activate && \
   pip install --upgrade pip && \
   pip install numpy && \
