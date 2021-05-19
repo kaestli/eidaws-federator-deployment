@@ -2,8 +2,6 @@
 #
 # Purpose: Run `eida-crawl-fdsnws-station`
 
-ODC=www.orfeus-eu.org
-
 BIN=/var/www/eidaws-federator/venv/bin/eida-crawl-fdsnws-station
 PATH_VAR_LIB=/var/lib/eidaws
 HISTORY_BASE="eida-crawl-fdsnws-station"
@@ -20,24 +18,12 @@ create_if_no_history () {
 
 create_if_no_history "${PATH_HISTORY}"
 
-# ODC is slow - crawl it separately
-${BIN} --exclude-domain ${ODC} \
-  --worker-pool-size 8 --timeout 30 \
+${BIN} --worker-pool-size 8 --timeout 30 \
   --history-json-load "${PATH_HISTORY}" \
   --history-json-dump "${PATH_HISTORY}.new" \
-  --history-include-supplementary-epochs >> /dev/null &
-pid=$!
-${BIN} --domain ${ODC} \
-  --worker-pool-size 6 --timeout 120 \
-  --level network station \
-  --sorted \
-  -P /var/tmp/eida-crawl-fdsnws-station-odc.pid >> /dev/null &
+  --history-include-supplementary-epochs >> /dev/null
 
-# wait for the ODC crawling process
-wait $!
-
-# wait for the general crawling process
-if wait ${pid}
+if [ $? -eq 0 ]
 then
   sleep 30m
   # recrawl history by error status
