@@ -1,17 +1,17 @@
 # Dockerizing eidaws-federator
 #
 # Build Container:
-# docker build -t eidaws-federator:1.0 .
+# docker build -t eidaws-federator:1.1 .
 #
 # Run Container:
 # docker run [-d] [--rm] [--name eidaws-federator] -p 8080:8080 \
-#   eidaws-federator:1.0
+#   eidaws-federator:1.1
 #
 # Modify running container:
 # docker exec -it eidaws-federator /bin/bash
 
 # Base image
-FROM docker.io/phusion/baseimage:bionic-1.0.0
+FROM docker.io/phusion/baseimage:focal-1.0.0
 
 ARG INSTANCES_DATASELECT_MINISEED=12
 ARG INSTANCES_STATION_TEXT=12
@@ -29,10 +29,9 @@ CMD ["/sbin/my_init"]
 RUN export DEBIAN_FRONTEND=noninteractive && \
   apt-get update && apt-get install -y libxml2-dev \
                                        libxslt-dev \
-                                       python3.7 \
-                                       python3.7-dev \
-                                       python3.7-venv \
+                                       python3-dev \
                                        python3-pip \
+                                       python3-venv \
                                        nginx
 
 # Configure nginx
@@ -53,7 +52,7 @@ COPY $DIR_CONTAINERFILE/../eidaws/eidaws.federator \
   /usr/local/src/eidaws/eidaws.federator/
 
 # Setup virtualenv and install services
-RUN python3.7 -m venv /var/www/eidaws-federator/venv && \
+RUN python3.8 -m venv /var/www/eidaws-federator/venv && \
   /bin/bash -c "source /var/www/eidaws-federator/venv/bin/activate && \
   pip install --upgrade pip && \
   pip install -e /usr/local/src/eidaws/eidaws.utils && \
