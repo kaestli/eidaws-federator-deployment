@@ -47,7 +47,7 @@ In order to build ``eidaws-endpoint-proxy`` container image, invoke
 
 .. code::
 
-  $ docker build -t eidaws-endpoint-proxy:1.0 -f proxy/Dockerfile .
+  $ docker build -t eidaws-endpoint-proxy:1.1 -f proxy/Dockerfile .
 
 
 The ``eidaws-endpoint-proxy`` container implements both proxy facilites and
@@ -68,7 +68,7 @@ Next, build the ``eidaws-stationlite`` container image with
 
 .. code::
 
-  $ docker build -t eidaws-stationlite:1.0 -f stationlite/Dockerfile .
+  $ docker build -t eidaws-stationlite:1.1 -f stationlite/Dockerfile .
 
 
 eidaws-federator
@@ -79,7 +79,7 @@ service component:
 
 .. code::
 
-  $ docker build [--build-arg=INSTANCE_XXX=20] -t eidaws-federator:1.0 \
+  $ docker build [--build-arg=INSTANCE_XXX=20] -t eidaws-federator:1.1 \
     -f federator/Dockerfile .
 
 Note that the ``federator/Dockerfile`` allows the number of backend
