@@ -19,7 +19,7 @@ services:
     container_name: eidaws-federator-redis
     image: redis:6
     volumes:
-      - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./redis:/usr/local/etc/redis
     restart: always
     command: "redis-server /usr/local/etc/redis/redis.conf"
 
