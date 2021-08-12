@@ -1,11 +1,11 @@
 # Dockerizing eidaws-federator
 #
 # Build Container:
-# docker build -t eidaws-federator:1.1 .
+# docker build -t eidaws-federator:TAG .
 #
 # Run Container:
 # docker run [-d] [--rm] [--name eidaws-federator] -p 8080:8080 \
-#   eidaws-federator:1.1
+#   eidaws-federator:TAG
 #
 # Modify running container:
 # docker exec -it eidaws-federator /bin/bash

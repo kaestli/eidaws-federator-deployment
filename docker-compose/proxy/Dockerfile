@@ -1,11 +1,11 @@
 # Dockerizing eidaws-federator endpoint caching proxy
 #
 # Build Container:
-# docker build -t eidaws-endpoint-proxy:1.1 .
+# docker build -t eidaws-endpoint-proxy:TAG .
 #
 # Run Container:
 # docker run [-d] [--rm] [--name eidaws-endpoint-proxy] \
-#   -p 8090:8090 eidaws-endpoint-proxy:1.1
+#   -p 8090:8090 eidaws-endpoint-proxy:TAG
 #
 # Modify running container:
 # docker exec -it eidaws-endpoint-proxy /bin/bash

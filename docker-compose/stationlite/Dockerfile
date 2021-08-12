@@ -1,11 +1,11 @@
 # Dockerizing eidaws-stationlite
 #
 # Build Container:
-# docker build -t eidaws-stationlite:1.1 .
+# docker build -t eidaws-stationlite:TAG .
 #
 # Run Container:
 # docker run [-d] [--rm] [--name eidaws-stationlite] -p 8089:8089 \
-#   eidaws-stationlite:1.1
+#   eidaws-stationlite:TAG
 #
 # Modify running container:
 # docker exec -it eidaws-stationlite /bin/bash
