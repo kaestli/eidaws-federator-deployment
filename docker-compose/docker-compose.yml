@@ -3,7 +3,7 @@ services:
   # eidaws-federator
   federator:
     container_name: eidaws-federator
-    image: eidaws-federator:1.1
+    image: eidaws-federator:1.1.1
     restart: always
     volumes:
       - type: volume
@@ -40,7 +40,7 @@ services:
   # eidaws-endpoint-proxy
   endpoint-proxy:
     container_name: eidaws-endpoint-proxy
-    image: eidaws-endpoint-proxy:1.1
+    image: eidaws-endpoint-proxy:1.1.1
     restart: always
     volumes:
       - type: volume
@@ -59,7 +59,7 @@ services:
   # eidaws-stationlite
   stationlite:
     container_name: eidaws-stationlite
-    image: eidaws-stationlite:1.1
+    image: eidaws-stationlite:1.1.1
     env_file:
       - env
     restart: always
