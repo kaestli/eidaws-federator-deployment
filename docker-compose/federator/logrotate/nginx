@@ -13,6 +13,6 @@
                 fi \
         endscript
         postrotate
-                sv nginx reload >/dev/null 2>&1
+                sv reload nginx >/dev/null 2>&1
         endscript
 }

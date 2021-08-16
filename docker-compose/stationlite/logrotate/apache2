@@ -7,9 +7,10 @@
         notifempty
         create 640 root adm
         sharedscripts
+        # Note that a *reload* de-facto is a *graceful* restart of apache2.
         postrotate
                 if sv status apache2 > /dev/null 2>&1; then \
-                    sv reload apache2 > /dev/null 2>&1; \
+                    /etc/init.d/apache2 reload > /dev/null 2>&1; \
                 fi;
         endscript
         prerotate
