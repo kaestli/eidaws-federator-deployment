@@ -101,6 +101,7 @@ services:
   stationlite-psql:
     container_name: eidaws-stationlite-psql
     image: postgres:12
+    shm_size: 512m
     env_file:
       - env
     restart: always
