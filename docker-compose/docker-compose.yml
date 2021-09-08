@@ -5,6 +5,11 @@ services:
     container_name: eidaws-federator
     image: eidaws-federator:1.1.1
     restart: always
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "10"
     volumes:
       - type: volume
         source: eidaws_federator_log
@@ -18,6 +23,11 @@ services:
   federator-redis:
     container_name: eidaws-federator-redis
     image: redis:6
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
     volumes:
       - ./redis:/usr/local/etc/redis
     restart: always
@@ -31,6 +41,11 @@ services:
       - "URLS=[{url:\"openapi/dataselect.yml\",name:\"fdsnws-dataselect\"},{url:\"openapi/station.yml\",name:\"fdsnws-station\"},{url:\"openapi/wfcatalog.yml\",name:\"eidaws-wfcatalog\"}]"
       - BASE_URL=/swagger
       - PORT=8082
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
     volumes:
       - ./eidaws/eidaws.federator/openapi:/usr/share/nginx/html/openapi
     restart: always
@@ -42,6 +57,11 @@ services:
     container_name: eidaws-endpoint-proxy
     image: eidaws-endpoint-proxy:1.1.1
     restart: always
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "5"
     volumes:
       - type: volume
         source: eidaws_endpoint_proxy_log
@@ -63,6 +83,11 @@ services:
     env_file:
       - env
     restart: always
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "5"
     volumes:
       - type: volume
         source: eidaws_stationlite_log
@@ -79,6 +104,11 @@ services:
     env_file:
       - env
     restart: always
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
     volumes:
       - type: volume
         source: eidaws_stationlite_pgdata
