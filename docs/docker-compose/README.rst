@@ -37,56 +37,40 @@ Building
 ========
 
 The ``eidaws-federator`` deployment is subdevided into several components. While
-some of the container images are downloaded from a container registry the
-following containers must be build manually:
+some of the container images are downloaded from a container registry some
+containers must be build manually. The following containers require special
+preparation and/or configuration:
 
-eidaws-endpoint-proxy
----------------------
+- **eidaws-stationlite**
 
-In order to build ``eidaws-endpoint-proxy`` container image, invoke
+  ``eidaws-stationlite`` implements ``eidaws-federator``'s routing facilities.
 
-.. code::
+  Before building and running the ``eidaws-stationlite`` container adjust the
+  variables defined within the ``docker-compose/env`` configuration file
+  according to your needs. Make sure to pick a proper username and password for
+  the internally used PostgreSQL_ database and write these down for later.
 
-  $ docker build -t eidaws-endpoint-proxy:1.1.2 -f proxy/Dockerfile .
+- **eidaws-federator**
 
+  ``eidaws-federator`` implements the actual federating service component.
 
-The ``eidaws-endpoint-proxy`` container implements both proxy facilites and
-caching facilities.
+  The ``federator/Dockerfile`` file allows the number of federating backend
+  service instances to be optionally configured during build time. For this
+  reason the following build args ``INSTANCES_DATASELECT_MINISEED``,
+  ``INSTANCES_STATION_TEXT``, ``INSTANCES_STATION_XML`` and
+  ``INSTANCES_WFCATALOG_JSON`` are provided.
 
-
-eidaws-stationlite
-------------------
-
-``eidaws-stationlite`` implements ``eidaws-federator``'s routing facilities.
-
-Before building and running the ``eidaws-stationlite`` container adjust the
-variables defined within the ``docker-compose/env`` configuration file
-according to your needs. Make sure to pick a proper username and password for
-the internally used PostgreSQL_ database and write these down for later.
-
-Next, build the ``eidaws-stationlite`` container image with
-
-.. code::
-
-  $ docker build -t eidaws-stationlite:1.1.2 -f stationlite/Dockerfile .
+  While building these build time variables may be provided by means of the
+  ``--build-arg`` CLI flag (i.e.  ``--build-arg=INSTANCES_XXX=N``, where
+  ``N`` corresponds to the number of ``XXX`` type federating backend service
+  instances to be created).
 
 
-eidaws-federator
-----------------
-
-Finally, it is time to build ``eidaws-federator``, the actual federating
-service component:
+Finally, the containers are built with:
 
 .. code::
 
-  $ docker build [--build-arg=INSTANCE_XXX=20] -t eidaws-federator:1.1.2 \
-    -f federator/Dockerfile .
-
-Note that the ``federator/Dockerfile`` allows the number of backend
-applications to be configured during build time. The build args
-``INSTANCES_DATASELECT_MINISEED``, ``INSTANCES_STATION_TEXT``,
-``INSTANCES_STATION_XML`` and ``INSTANCES_WFCATALOG_JSON`` are provided in
-order to configure the number of federating backend services.
+  $ docker-compose -f docker-compose.yml build [--build-arg=INSTANCES_XXX=N]
 
 
 Deployment
