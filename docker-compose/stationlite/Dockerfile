@@ -45,7 +45,7 @@ COPY $DIR_CONTAINERFILE/../eidaws/eidaws.stationlite \
 RUN virtualenv /var/www/eidaws-stationlite/venv && \
   /bin/bash -c "source /var/www/eidaws-stationlite/venv/bin/activate && \
   pip install --upgrade pip && \
-  pip install numpy && \
+  pip install numpy==1.21.5 && \
   pip install -e /usr/local/src/eidaws/eidaws.utils && \
   pip install -e /usr/local/src/eidaws/eidaws.stationlite[postgres] && deactivate"
 
