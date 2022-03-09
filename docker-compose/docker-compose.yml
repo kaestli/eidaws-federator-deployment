@@ -85,7 +85,7 @@ services:
   # eidaws-stationlite
   stationlite:
     container_name: eidaws-stationlite
-    image: eidaws-stationlite:1.1.3
+    image: eidaws-stationlite:1.1.4
     build:
       context: .
       dockerfile: ./stationlite/Dockerfile
