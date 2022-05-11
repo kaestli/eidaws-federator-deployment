@@ -33,7 +33,7 @@
         "connection_limit": 18
     },
     {
-        "fqdn": "eida-service.koeri.boun.edu.tr",
+        "fqdn": "eida.koeri.boun.edu.tr",
         "proxy_netloc": "127.0.0.1:44007",
         "connection_limit": 20
     },
