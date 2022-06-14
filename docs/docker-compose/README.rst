@@ -32,7 +32,6 @@ required:
   $ git clone --recurse-submodules https://github.com/EIDA/eidaws-federator-deployment.git && \
     cd eidaws-federator-deployment/docker-compose
 
-
 Building
 ========
 
@@ -54,6 +53,12 @@ preparation and/or configuration:
 
   ``eidaws-federator`` implements the actual federating service component.
 
+  If you plan to expose the federator via https, place the certificate, and the 
+  private key in /etc/ngingx/cert, under the following names:
+  eida-federator.crt
+  eida-federator.key
+  
+  
   The ``federator/Dockerfile`` file allows the number of federating backend
   service instances to be optionally configured during build time. For this
   reason the following build args ``INSTANCES_DATASELECT_MINISEED``,

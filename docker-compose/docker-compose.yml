@@ -14,13 +14,15 @@ services:
         max-size: "10m"
         max-file: "10"
     volumes:
+      - /etc/nginx/cert:/etc/nginx/cert
       - type: volume
         source: eidaws_federator_log
         target: /var/log/eidaws
         volume:
           nocopy: false
     ports:
-      - "8080:8080"
+      - "80:8080"
+      - "443:443"
 
   # eidaws-federator Redis backend
   federator-redis:
