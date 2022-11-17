@@ -54,10 +54,14 @@ preparation and/or configuration:
   ``eidaws-federator`` implements the actual federating service component.
 
   If you plan to expose the federator via https, place the certificate, and the 
-  private key in /etc/ngingx/cert, under the following names:
-  eida-federator.crt
-  eida-federator.key
-  
+  private key in /etc/nginx/cert, under the following names:
+
+  ``eida-federator.crt``
+
+  ``eida-federator.key``
+
+  If you do NOT plan to expose the federator via https, set the PROTOCOL build arg
+  to http (instead of https) in the ``federator/Dockerfile``.  
   
   The ``federator/Dockerfile`` file allows the number of federating backend
   service instances to be optionally configured during build time. For this
@@ -77,6 +81,12 @@ Finally, the containers are built with:
 
   $ docker-compose -f docker-compose.yml build [--build-arg=INSTANCES_XXX=N]
 
+...or, if built for production (exposed on standard ports instead of 8080/8443):
+
+.. code::
+  $ docker-compose -f docker-compose.yml docker-compose.production.yml build \
+       [--build-arg=INSTANCES_XXX=N]
+  
 
 Deployment
 ==========
@@ -91,6 +101,13 @@ configuration file.
 .. code::
 
   $ docker-compose -f docker-compose.yml up -d
+
+A specific compose addon will set deploy the federator to priviledged ports 
+(80/443 instead of 8080/8443):
+
+.. code::
+
+  docker compose -f docker-compose.yml -f docker-compose.production.yml up -d
 
 If you're deploying the services for the very first time you are required to
 create the database schema

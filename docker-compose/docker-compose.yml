@@ -3,7 +3,7 @@ services:
   # eidaws-federator
   federator:
     container_name: eidaws-federator
-    image: eidaws-federator:1.1.2
+    image: eidaws-federator:1.2.0
     build:
       context: .
       dockerfile: ./federator/Dockerfile
@@ -21,8 +21,8 @@ services:
         volume:
           nocopy: false
     ports:
-      - "80:8080"
-      - "443:443"
+      - "8080:8080"
+      - "8443:443"
 
   # eidaws-federator Redis backend
   federator-redis:
