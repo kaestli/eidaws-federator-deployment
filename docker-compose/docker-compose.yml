@@ -60,7 +60,7 @@ services:
   # eidaws-endpoint-proxy
   endpoint-proxy:
     container_name: eidaws-endpoint-proxy
-    image: eidaws-endpoint-proxy:1.1.2
+    image: eidaws-endpoint-proxy:1.1.4
     build:
       context: .
       dockerfile: ./proxy/Dockerfile
