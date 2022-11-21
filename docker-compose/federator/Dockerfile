@@ -18,6 +18,10 @@ ARG INSTANCES_STATION_TEXT=12
 ARG INSTANCES_STATION_XML=12
 ARG INSTANCES_WFCATALOG_JSON=6
 ARG DIR_CONTAINERFILE=federator
+ARG CERT=eida-federator.crt
+ARG PRIVKEY=eida-federator.key
+ARG PROTOCOL=https  
+# http or https
 
 # Add label metadata
 LABEL maintainer="Daniel Armbruster"
@@ -36,8 +40,11 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
 
 # Configure nginx
 ADD $DIR_CONTAINERFILE/conf.d /etc/nginx/conf.d
+COPY $DIR_CONTAINERFILE/$PROTOCOL.conf /etc/nginx/conf.d/server.conf
 COPY $DIR_CONTAINERFILE/nginx.conf /etc/nginx
 COPY $DIR_CONTAINERFILE/index.html /var/www/html
+COPY $DIR_CONTAINERFILE/nginx-eidaws-include.conf /etc/nginx/snippets/
+
 
 # Add the nginx service
 RUN mkdir /etc/service/nginx && \

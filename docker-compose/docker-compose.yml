@@ -3,7 +3,7 @@ services:
   # eidaws-federator
   federator:
     container_name: eidaws-federator
-    image: eidaws-federator:1.1.2
+    image: eidaws-federator:1.2.0
     build:
       context: .
       dockerfile: ./federator/Dockerfile
@@ -14,6 +14,7 @@ services:
         max-size: "10m"
         max-file: "10"
     volumes:
+      - /etc/nginx/cert:/etc/nginx/cert
       - type: volume
         source: eidaws_federator_log
         target: /var/log/eidaws
@@ -21,6 +22,7 @@ services:
           nocopy: false
     ports:
       - "8080:8080"
+      - "8443:443"
 
   # eidaws-federator Redis backend
   federator-redis:

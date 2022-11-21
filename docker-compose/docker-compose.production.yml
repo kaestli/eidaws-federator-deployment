@@ -1,0 +1,7 @@
+services:
+  # eidaws-federator
+  federator:
+    ports:
+      - "80:8080"
+      - "443:443"
+
