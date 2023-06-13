@@ -107,7 +107,7 @@ A specific compose addon will set deploy the federator to priviledged ports
 
 .. code::
 
-  docker compose -f docker-compose.yml -f docker-compose.production.yml up -d
+  $ docker compose -f docker-compose.yml -f docker-compose.production.yml up -d
 
 If you're deploying the services for the very first time you are required to
 create the database schema
