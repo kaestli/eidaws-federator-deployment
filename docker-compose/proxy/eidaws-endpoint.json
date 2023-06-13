@@ -61,6 +61,7 @@
         "proxy_netloc": "127.0.0.1:44012",
         "connection_limit": 10
     },
+    {
         "fqdn": "eida.bgs.ac.uk",
         "proxy_netloc": "127.0.0.1:44013",
         "connection_limit": 10
