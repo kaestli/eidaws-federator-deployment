@@ -89,7 +89,7 @@ RUN chmod +x /tmp/install_backend.sh && \
   ./tmp/install_backend.sh \
   eida-federator-wfcatalog-json $INSTANCES_WFCATALOG_JSON && \
   ./tmp/install_backend.sh \
-  eida-federator-availability-geocsv-json $INSTANCES_AVAILABILITY_GEOCSV && \
+  eida-federator-availability-geocsv $INSTANCES_AVAILABILITY_GEOCSV && \
   ./tmp/install_backend.sh \
   eida-federator-availability-text $INSTANCES_AVAILABILITY_TEXT && \
   ./tmp/install_backend.sh \
