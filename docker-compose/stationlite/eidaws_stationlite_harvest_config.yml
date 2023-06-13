@@ -52,7 +52,7 @@ urls-localconfig:
 # List of service resources being harvested.
 #
 services:
-#   - availability
+  - availability
   - dataselect
   - station
   - wfcatalog

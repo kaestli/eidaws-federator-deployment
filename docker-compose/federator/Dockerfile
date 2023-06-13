@@ -17,6 +17,10 @@ ARG INSTANCES_DATASELECT_MINISEED=12
 ARG INSTANCES_STATION_TEXT=12
 ARG INSTANCES_STATION_XML=12
 ARG INSTANCES_WFCATALOG_JSON=6
+ARG INSTANCES_AVAILABILITY_GEOCSV=3
+ARG INSTANCES_AVAILABILITY_TEXT=3
+ARG INSTANCES_AVAILABILITY_JSON=3
+ARG INSTANCES_AVAILABILITY_REQUEST=3
 ARG DIR_CONTAINERFILE=federator
 ARG CERT=eida-federator.crt
 ARG PRIVKEY=eida-federator.key
@@ -83,7 +87,15 @@ RUN chmod +x /tmp/install_backend.sh && \
   ./tmp/install_backend.sh \
   eida-federator-station-xml $INSTANCES_STATION_XML && \
   ./tmp/install_backend.sh \
-  eida-federator-wfcatalog-json $INSTANCES_WFCATALOG_JSON
+  eida-federator-wfcatalog-json $INSTANCES_WFCATALOG_JSON && \
+  ./tmp/install_backend.sh \
+  eida-federator-availability-geocsv-json $INSTANCES_AVAILABILITY_GEOCSV && \
+  ./tmp/install_backend.sh \
+  eida-federator-availability-text $INSTANCES_AVAILABILITY_TEXT && \
+  ./tmp/install_backend.sh \
+  eida-federator-availability-json $INSTANCES_AVAILABILITY_JSON && \
+  ./tmp/install_backend.sh \
+  eida-federator-availability-request $INSTANCES_AVAILABILITY_REQUEST
 
 # Static content
 COPY $DIR_CONTAINERFILE/static /var/www/eidaws-federator/static

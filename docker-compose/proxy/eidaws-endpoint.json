@@ -6,11 +6,12 @@
     {
         "fqdn": "geofon.gfz-potsdam.de",
         "proxy_netloc": "127.0.0.1:44001",
-        "connection_limit": 9
+        "connection_limit": 40
     },
     {
         "fqdn": "ws.resif.fr",
-        "proxy_netloc": "127.0.0.1:44002"
+        "proxy_netloc": "127.0.0.1:44002",
+	"connection_limit": 20
     },
     {
         "fqdn": "webservices.ingv.it",
@@ -53,6 +54,15 @@
     {
         "fqdn": "ws.icgc.cat",
         "proxy_netloc": "127.0.0.1:44011",
+        "connection_limit": 10
+    },
+    {
+	"fqdn": "deprem.afad.gov.tr",
+	"proxy_netloc": "127.0.0.1:44012",
+	"connection_limit": 10
+    },
+        "fqdn": "eida.bgs.ac.uk",
+        "proxy_netloc": "127.0.0.1:44013",
         "connection_limit": 10
     }
 ]
